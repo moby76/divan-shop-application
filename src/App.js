@@ -8,7 +8,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           {/* Edit <code>src/App.js</code> and save to reload. */}
-          АртДиван
+          АртДиван: Изготовление и продажа мягкой мебели
         </p>
         <a
           className="App-link"
