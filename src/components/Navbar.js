@@ -1,11 +1,15 @@
+import { NavLink } from "react-router-dom";
+
 export const Navbar = () => (
     <nav className="navbar navbar-dark bg-primary navbar-expand-lg">
-        <a className="navbar-brand" href="/">АртДиван</a>
+        <NavLink to="/" className="navbar-brand" >АртДиван</NavLink>
         <ul className="navbar-nav">
             <li className="nav-item">
-                <a href="soft-furniture" className="nav-link">Мягкая Мебель</a> 
+                <NavLink to="/soft-furniture" className="nav-link">Мягкая Мебель</ NavLink> 
             </li>
-            <li className="nav-item"></li>
+            <li className="nav-item">
+            <NavLink to="/articles" className="nav-link">Статьи</NavLink>
+            </li>
         </ul>
     </nav>
 )
