@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
+import { SoftFurState } from './context/SoftFur/SoftfurState'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   // <React.StrictMode>
-    <App />,
+  <SoftFurState>
+    <App />
+  </SoftFurState>,
   // </React.StrictMode>,
   document.getElementById('root')
 );

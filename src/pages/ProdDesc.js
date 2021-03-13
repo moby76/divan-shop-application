@@ -1,5 +1,6 @@
-export const ProdDesc = () => {
+export const ProdDesc = ({match}) => {
 
+  console.log(match)
 
     return(
         <div>
