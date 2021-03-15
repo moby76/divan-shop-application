@@ -18,7 +18,7 @@ function App() {
               <Route path="/" exact component={Home} />
               <Route path="/soft-furniture" exact component={SoftFur} />
               {/* <Route path="/articles" component={Articles} /> */}
-              <Route path="/soft-furniture/:title" component={ProdDesc} />
+              <Route path="/soft-furniture/:id" component={ProdDesc} />
             </Switch>
           </div>
         </BrowserRouter>

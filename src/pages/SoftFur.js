@@ -1,6 +1,6 @@
 // import axios from "axios";
 // import API from '../utils/api'
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Card } from '../components/Card';
 import { SoftFurContext } from '../context/SoftFur/SoftFurContext';
 
@@ -23,29 +23,12 @@ import { SoftFurContext } from '../context/SoftFur/SoftFurContext';
 export const SoftFur = () => {
   // const [content, setContent] = useState([]);
 
-  const { content } = useContext(SoftFurContext)
+  const { fetchData, content } = useContext(SoftFurContext)
 
-  // useEffect(() =>{ 
-  //   const { content } = useContext(SoftFurContext)
-  //   content
-  // }  
-  // ,[])
-
-  // useEffect(() => {
-
-  //   const fetchData = async () => {
-  //     const respValues = await API.get(
-  //       `node/soft_fur?include=field_photo,field_soft_config&sort=created&page[limit]=10`
-  //     );
-
-  //     setContent(respValues.data.data);
-  //     // setImage(respImg.data.included)
-  //   }
-  //   fetchData();
-  //   //   .catch(err => console.log('There was an error accessing the API', err));
-  // }, [])
-
-  console.log("Content", content)
+  useEffect(() => {
+    fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   return (
     <div>
@@ -56,7 +39,7 @@ export const SoftFur = () => {
             // <h5>sfsfdsf</h5>
             <div className="col-sm-4 mb-4" key={val.id}>
               <Card
-                val={val}
+                {...val}
               />
             </div>
           )
