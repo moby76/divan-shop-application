@@ -23,10 +23,11 @@ import { SoftFurContext } from '../context/SoftFur/SoftFurContext';
 export const SoftFur = () => {
   // const [content, setContent] = useState([]);
 
-  const { fetchData, content } = useContext(SoftFurContext)
+  const { fetchData, content, loader } = useContext(SoftFurContext)
 
   useEffect(() => {
     fetchData()
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
@@ -34,7 +35,9 @@ export const SoftFur = () => {
     <div>
       <h1>Hello</h1>
       <div className="row">
-        {content.map((val) => {
+        {loader ? 
+        <p className="text-center">...Идёт загрузка</p> :
+        content.map((val) => {
           return (
             // <h5>sfsfdsf</h5>
             <div className="col-sm-4 mb-4" key={val.id}>
@@ -43,10 +46,10 @@ export const SoftFur = () => {
               />
             </div>
           )
-        })}
-
+        })
+      }
+      
       </div>
-
     </div>
   );
 };
