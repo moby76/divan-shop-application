@@ -10,4 +10,7 @@
 
 export const GET_PRODUCTS = 'GET_PRODUCTS'
 export const GET_PRODUCT = 'GET_PRODUCT'
+export const GET_NEWITEMS = 'GET_NEWITEMS'
+
 export const SET_LOADING = 'SET_LOADING'
+
