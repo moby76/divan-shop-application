@@ -5,16 +5,7 @@ import { SoftFurContext } from './SoftFurContext'
 import { SoftFurReducer } from './softFurReducer'
 
 export const SoftFurState = ({ children }) => {
-
-    // const [content, setContent] = useState([])
-    // const [product, setProduct] = useState({
-    //     title: undefined,
-    //     price: '',
-    //     config: undefined,
-    //     img: ''
-    // }) 
-
-    // Переписать --^ useReducer
+    
     const initialState = {
         content: [],
         product: {},
@@ -29,14 +20,12 @@ export const SoftFurState = ({ children }) => {
         setLoader()
 
         const contentVal = await API.get(
-            `node/soft_fur?include=field_photo,field_soft_config&sort=created&page[limit]=10`
+            `node/soft_fur?include=photo,soft_config&sort=created&page[limit]=10`
         )
-        // setContent(contentVal.data.data)
         dispatch({
             type: GET_PRODUCTS,
             payload: contentVal.data.data
-        })
-        // catch(error => console.log('error:', error));           
+        })         
     }
     // fetchData()
 
@@ -45,21 +34,12 @@ export const SoftFurState = ({ children }) => {
         setLoader()
 
         const prodVal = await API.get(
-            `node/soft_fur/${url}?include=field_photo,field_soft_config&sort=created&page[limit]=10`
+            `node/soft_fur/${url}?include=photo,soft_config&sort=created&page[limit]=10`
         )
-        // setProduct(respValues.data.data)
-        // setProduct({
-        //     title: respValues.data.data.title,
-        //     price: respValues.data.data.field_price_base,
-        //     config: respValues.data.data.field_soft_config.name,
-        //     img: respValues.data.data.field_photo.uri.url
-        // })
         dispatch({
             type: GET_PRODUCT,
             payload: prodVal.data.data
         })
-
-
     }
     
     //метод изменения состояния лоадера
