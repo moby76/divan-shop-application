@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { Fragment, useContext, useEffect } from "react"
 import { NewItem } from "../components/NewItem"
 import { SoftFurContext } from "../context/SoftFur/SoftFurContext"
 
@@ -8,27 +8,32 @@ export const NewItemsList = () => {
 
     useEffect(() => {
         fetchNewItems()
-      
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
 
-    return(
-        <div className="row">
-            Новинки
-            {loader ? 
-        <p className="text-center">...Идёт загрузка</p> :
-        newitems.map((val) => {
-          return (
-            // <h5>sfsfdsf</h5>
-            <div className="col-sm-4 mb-4" key={val.id}>
-              <NewItem 
-                {...val}
-            />
-            </div>
-          )
-        })
-      }
-            
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    return (
+        <div className="container-fluid">
+            <div className="col-sm-12 text-center"> <h3>Новинки</h3> </div>
+            <hr/>
+            {loader ?
+                <p className="text-center">...Идёт загрузка</p> :
+                newitems.map((val) => {
+                    return (
+                        <Fragment>
+                            
+                            <div className="row mb-4" key={val.id}>
+                                <NewItem
+                                    {...val}
+                                />
+                            </div>
+
+                            <hr />
+                        </Fragment>
+                    )
+                })
+            }
+
         </div>
     )
 }
