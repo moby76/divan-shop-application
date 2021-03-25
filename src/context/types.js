@@ -11,6 +11,8 @@
 export const GET_PRODUCTS = 'GET_PRODUCTS'
 export const GET_PRODUCT = 'GET_PRODUCT'
 export const GET_NEWITEMS = 'GET_NEWITEMS'
+export const GET_ITEMS_BY_MODEL = 'GET_ITEMS_BY_MODEL'
 
 export const SET_LOADING = 'SET_LOADING'
+export const SET_PAGINATE = 'SET_PAGINATE'
 

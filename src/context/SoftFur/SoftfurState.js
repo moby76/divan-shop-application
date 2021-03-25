@@ -1,6 +1,6 @@
-import { useReducer, useState } from 'react'
+import { useReducer } from 'react'
 import API from '../../utils/api'
-import { GET_PRODUCT, GET_PRODUCTS, SET_LOADING, GET_NEWITEMS } from '../types'
+import { GET_PRODUCT, GET_PRODUCTS, SET_LOADING, GET_NEWITEMS, SET_PAGINATE, GET_ITEMS_BY_MODEL } from '../types'
 import { SoftFurContext } from './SoftFurContext'
 import { SoftFurReducer } from './softFurReducer'
 
@@ -9,7 +9,10 @@ export const SoftFurState = ({ children }) => {
     const initialState = {
         content: [],
         newitems: [],
+        itemsByModels: [],
         product: {},
+        currentPage: 1,
+        itemsPerPage: 10,
         loader: false
     }
 
@@ -22,14 +25,13 @@ export const SoftFurState = ({ children }) => {
         setLoader()
 
         const contentVal = await API.get(
-            `node/soft_fur?include=photo,soft_config&sort=created&page[limit]=10`
+            `node/soft_fur?include=photo,soft_config,model&sort=created&page[limit]=10`
         )
         dispatch({
             type: GET_PRODUCTS,
             payload: contentVal.data.data
         })         
     }
-    // fetchData()
 
     //Запрос на получение данных для формирования описания товара
     const fetchProduct = async (url) => {
@@ -37,7 +39,7 @@ export const SoftFurState = ({ children }) => {
         setLoader()
 
         const prodVal = await API.get(
-            `node/soft_fur/${url}?include=photo,soft_config&sort=created&page[limit]=10`
+            `node/soft_fur/${url}?include=photo,soft_config,model&sort=created&page[limit]=10`
         )
         dispatch({
             type: GET_PRODUCT,
@@ -58,6 +60,18 @@ export const SoftFurState = ({ children }) => {
             payload: response.data.data
         })
     }
+
+    //запрос на получение материалов по полю модель
+    const fetchItemsByModel = async(model) => {
+        setLoader()
+        const response = await API.get(
+            `http://api.divan-shop.loc/jsonapi/node/soft_fur?fields[node--soft_fur]=title,model&fields[taxonomy_term--models]=name&page[limit]=10&include=model&filter[model.name]=${model}`
+        )
+        dispatch({
+            type: GET_ITEMS_BY_MODEL,
+            payload: response.data.data
+        })
+    }
     
     //метод изменения состояния лоадера
     const setLoader = () => {
@@ -65,11 +79,21 @@ export const SoftFurState = ({ children }) => {
             type: SET_LOADING
         })
     }
-    const { content, product, loader, newitems } = state
+
+    //метод изменения номера текущей пагинации
+    const paginate = (pageNumber) => {
+        dispatch({
+            type: SET_PAGINATE,
+            value: pageNumber
+        })
+    }
+
+
+    const { content, product, loader, newitems, currentPage, itemsPerPage, itemsByModels } = state
 
     return <SoftFurContext.Provider value={{
-        fetchData, fetchProduct, setLoader, fetchNewItems,
-        content, product, loader, newitems
+        fetchData, fetchProduct, setLoader, fetchNewItems, paginate, fetchItemsByModel,
+        content, product, loader, newitems, currentPage, itemsPerPage, itemsByModels
     }}>
         {children}
     </SoftFurContext.Provider>
