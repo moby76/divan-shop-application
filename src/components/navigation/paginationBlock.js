@@ -2,16 +2,16 @@ import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { SoftFurContext } from "../../context/SoftFur/SoftFurContext"
 
-export const Pagination = () => {
+export const PaginationBlock = ({current, urlName}) => {
     
     // { itemsPerPage, totalItems } --^
 
-    const { itemsPerPage, content, paginate } = useContext(SoftFurContext)
+    const { itemsPerBlock, content, paginateBlock } = useContext(SoftFurContext)
 
     const pageNumbers = []
-    const totalItems = content.length
+    const totalItems = current.length
 
-    for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(totalItems / itemsPerBlock); i++) {
         // const element = array[i];
         pageNumbers.push(i)
     }
@@ -21,7 +21,7 @@ export const Pagination = () => {
             <ul className="pagination">
                 {pageNumbers.map(number => (
                     <li key={number} className="page-item">
-                        <Link onClick={() => paginate(number)} to="/soft-furniture/#" className="page-link">
+                        <Link onClick={() => paginateBlock(number)} to={`/soft-furniture/${urlName}/#`} className="page-link">
                             {number}
                         </Link>
                     </li>

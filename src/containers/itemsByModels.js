@@ -2,51 +2,56 @@ import { Link } from "react-router-dom";
 import basePath from '../utils/basePath'
 import { SoftFurContext } from "../context/SoftFur/SoftFurContext"
 import { useContext } from "react";
+import { Card } from "../components/Card";
+import { PaginationBlock } from "../components/navigation/paginationBlock";
 
 const ItemsByModels = ({ urlName }) => {
 
     // const { fetchData, content,  fetchProduct, product, loader } = useContext(SoftFurContext)
-    const { content, product, loader } = useContext(SoftFurContext)
+    const { content, product, loader, currentBlock, itemsPerBlock } = useContext(SoftFurContext)
 
     const { model } = product
 
     const current = content.filter(callback => {
-        return callback.id !== urlName && callback.model.name === model
+            return callback.id !== urlName && callback.model.name === model  
     })
 
-    console.log("Из той-же модели : ", current)
+    const indexofLastItems = currentBlock * itemsPerBlock
+    const indexOfFirstItems = indexofLastItems - itemsPerBlock
+    const currentItems = current.slice(indexOfFirstItems, indexofLastItems)
 
+    console.log("Из той-же модели : ", current)   
+    
     return (
         <div className="container">
             <div className="col-sm-12 text-center"> <h3>Другие товары модели {model}</h3> </div>
             <hr />
             <div className="row">
-
-                {loader ?
-                    <p className="text-center">...Идёт загрузка</p> :
-                    current.map((val) => {
+                {(loader) ?//если loader = true, то:  
+                    <p className="text-center">...Идёт загрузка</p> : //иначе:
+                    (current.length == 0) ? //если массив пустой(длина массива = 0 ), то:
+                    <p className="text-center"><h3>К сожалению ничего не найдено</h3></p> ://иначе:
+                    currentItems.map((val) => {                       
                         return (
-
+                            //переделать на карточки:
                             <div className="col-sm-4 mb-4" key={val.id}>
-
-                                <div className="card border border-light shadow-sm h-100">
-                                    <div className="card-header">
-                                        <h5 className="card-title">{val.title}</h5>
-                                    </div>
-                                    {/* <img src={`http://api.divan-shop.loc/${photo.uri.url}`} alt={photo.filename} className="card-img-top p-3" /> */}
-                                    <img src={`${basePath}${val.photo.uri.url}`} alt={val.title} className="card-img-top p-3" />
-                                    <div className="card-body">
-                                        <h5 className="card-text">{val.soft_config.name}</h5>
-                                        <Link to={`/soft-furniture/${val.id}`} target="_parent" className="btn btn-primary">Открыть</ Link >
-                                    </div>
-                                </div>
+                                <Card
+                                    {...val}
+                                />                                
                             </div>
                         )
                     })
                 }
             </div>
+            <PaginationBlock
+                urlName={urlName}
+                current={current}
+            />
         </div>
-    )
-}
+    )}
+
+
+
+
 
 export default ItemsByModels
