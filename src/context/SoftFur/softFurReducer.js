@@ -18,7 +18,7 @@ export const SoftFurReducer = (state, action) => {
                     config: action.payload.soft_config.name,
                     img_url: action.payload.photo.uri.url,
                     img_alt: action.payload.photo.filename,
-                    model: action.payload.model.name
+                    productModelName: action.payload.model.name
                 },
                 loader: false
             }

@@ -4,12 +4,18 @@ import './index.scss';
 import App from './App';
 import { SoftFurState } from './context/SoftFur/SoftfurState'
 import reportWebVitals from './reportWebVitals';
+import { TermsState } from './context/Terms/termsState';
+import { AlertState } from './context/alert/alertState';
 
 ReactDOM.render(
   // <React.StrictMode>
+  <AlertState>
+  <TermsState>
   <SoftFurState>
-    <App />
-  </SoftFurState>,
+      <App />
+  </SoftFurState>
+  </TermsState>
+  </AlertState>,
   // </React.StrictMode>,
   document.getElementById('root')
 );

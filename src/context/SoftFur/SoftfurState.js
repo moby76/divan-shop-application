@@ -12,13 +12,12 @@ export const SoftFurState = ({ children }) => {
         itemsByModels: [],//
         product: {},
         currentPage: 1,//текущая страница в пагинации
-        itemsPerPage: 5,//количество карточек с товарами на странице с мягкой мебелью. для пагинации
+        itemsPerPage: 6,//количество карточек с товарами на странице с мягкой мебелью. для пагинации
         currentBlock: 1,
         itemsPerBlock: 3,
         loader: false
     }
-
-    // const [loader, setLoader] = useState(true)   
+   
     const [state, dispatch] = useReducer(SoftFurReducer, initialState)
 
     //Запрос на получение данных для формирования страницы с карточками товаров 
@@ -64,10 +63,10 @@ export const SoftFurState = ({ children }) => {
     }
 
     //запрос на получение материалов по полю модель
-    const fetchItemsByModel = async (model) => {
+    const fetchItemsByModel = async (productModelName) => {
         setLoader()
         const response = await API.get(
-            `http://api.divan-shop.loc/jsonapi/node/soft_fur?fields[node--soft_fur]=title,model&fields[taxonomy_term--models]=name&page[limit]=10&include=model&filter[model.name]=${model}`
+            `http://api.divan-shop.loc/jsonapi/node/soft_fur?fields[node--soft_fur]=title,model&fields[taxonomy_term--models]=name&page[limit]=10&include=model&filter[model.name]=${productModelName}`
         )
         dispatch({
             type: GET_ITEMS_BY_MODEL,
@@ -90,10 +89,10 @@ export const SoftFurState = ({ children }) => {
         })
     }
     //метод изменения номера текущей пагинации Блока
-    const paginateBlock = (pageNumber) => {
+    const paginateBlock = (blockNumber) => {
         dispatch({
             type: SET_PAGINATE_BLOCK,
-            value: pageNumber
+            value: blockNumber
         })
     }
 
