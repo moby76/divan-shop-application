@@ -1,4 +1,4 @@
-import { GET_ITEMS_BY_MODEL, GET_NEWITEMS, GET_PRODUCT, GET_PRODUCTS, SET_LOADING, SET_PAGINATE, SET_PAGINATE_BLOCK } from "../types";
+import { GET_NEWITEMS, GET_PRODUCT, GET_PRODUCTS, SET_LOADING, SET_PAGINATE, SET_PAGINATE_BLOCK } from "../types";
 
 export const SoftFurReducer = (state, action) => {
     switch (action.type) {
@@ -28,12 +28,12 @@ export const SoftFurReducer = (state, action) => {
                 newitems: action.payload,
                 loader: false
             }
-        case GET_ITEMS_BY_MODEL:
-            return {
-                ...state,
-                itemsByModels: action.payload,
-                loader: false
-            }
+        // case GET_ITEMS_BY_MODEL:
+        //     return {
+        //         ...state,
+        //         itemsByModels: action.payload,
+        //         loader: false
+        //     }
         case SET_LOADING:
             return { ...state, loader: true }
         case SET_PAGINATE:

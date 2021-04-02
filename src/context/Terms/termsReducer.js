@@ -7,6 +7,7 @@ export const TermsReducer = (state, action) => {
             return {
                 ...state,
                 termModels: action.payload,
+                // schemeOfModel: action.payload.scheme,
                 loader: false
             }
         case GET_SINGLE_MODEL:

@@ -1,6 +1,6 @@
 import { useReducer } from 'react'
 import API from '../../utils/api'
-import { GET_PRODUCT, GET_PRODUCTS, SET_LOADING, GET_NEWITEMS, SET_PAGINATE, GET_ITEMS_BY_MODEL, SET_PAGINATE_BLOCK } from '../types'
+import { GET_PRODUCT, GET_PRODUCTS, SET_LOADING, GET_NEWITEMS, SET_PAGINATE, SET_PAGINATE_BLOCK } from '../types'
 import { SoftFurContext } from './SoftFurContext'
 import { SoftFurReducer } from './softFurReducer'
 
@@ -17,7 +17,7 @@ export const SoftFurState = ({ children }) => {
         itemsPerBlock: 3,
         loader: false
     }
-   
+
     const [state, dispatch] = useReducer(SoftFurReducer, initialState)
 
     //Запрос на получение данных для формирования страницы с карточками товаров 
@@ -29,7 +29,7 @@ export const SoftFurState = ({ children }) => {
             `node/soft_fur?include=photo,soft_config,model&sort=created`
         )
         dispatch({
-            type: GET_PRODUCTS,
+            type: GET_PRODUCTS,//данный тип оказывает влияние на массив content(заполняет его данными из jsonapi) и так-же деактивирует loader(false)
             payload: contentVal.data.data
         })
     }
@@ -42,10 +42,12 @@ export const SoftFurState = ({ children }) => {
         const prodVal = await API.get(
             `node/soft_fur/${url}?include=photo,soft_config,model&sort=created&page[limit]=10`
         )
-        dispatch({
-            type: GET_PRODUCT,
-            payload: prodVal.data.data
-        })
+            dispatch({
+                type: GET_PRODUCT,//данный тип оказывает влияние на объект product - загружает его из  jsonapi, а так-же деактивирует loader(false)
+                payload: prodVal.data.data
+            })
+
+        // console.log("eeerrttt")
     }
 
     //Запрос на получение данных для формирования списка новинок
@@ -54,7 +56,7 @@ export const SoftFurState = ({ children }) => {
         setLoader()
 
         const response = await API.get(
-            `node/soft_fur?include=photo,soft_config&filter[new_item][value%5D=1&fields[node--soft_fur]=title,available,price_base,created,photo,soft_config&sort=created&page[limit]=5`
+            `node/soft_fur?include=photo,soft_config&filter[new_item][value]=1&fields[node--soft_fur]=title,available,price_base,created,photo,soft_config&sort=created&page[limit]=5`
         )
         dispatch({
             type: GET_NEWITEMS,
@@ -62,17 +64,17 @@ export const SoftFurState = ({ children }) => {
         })
     }
 
-    //запрос на получение материалов по полю модель
-    const fetchItemsByModel = async (productModelName) => {
-        setLoader()
-        const response = await API.get(
-            `http://api.divan-shop.loc/jsonapi/node/soft_fur?fields[node--soft_fur]=title,model&fields[taxonomy_term--models]=name&page[limit]=10&include=model&filter[model.name]=${productModelName}`
-        )
-        dispatch({
-            type: GET_ITEMS_BY_MODEL,
-            payload: response.data.data
-        })
-    }
+    //запрос на получение материалов по полю "Название модели" 
+    // const fetchItemsByModel = async (productModelName) => {
+    //     setLoader()
+    //     const response = await API.get(
+    //         `http://api.divan-shop.loc/jsonapi/node/soft_fur?fields[node--soft_fur]=title,model&fields[taxonomy_term--models]=name&page[limit]=10&include=model&filter[model.name]=${productModelName}`
+    //     )
+    //     dispatch({
+    //         type: GET_ITEMS_BY_MODEL,
+    //         payload: response.data.data
+    //     })
+    // }
 
     //метод изменения состояния лоадера
     const setLoader = () => {
@@ -97,11 +99,11 @@ export const SoftFurState = ({ children }) => {
     }
 
 
-    const { content, product, loader, newitems, currentPage, itemsPerPage, itemsByModels, itemsPerBlock, currentBlock } = state
+    const { content, product, loader, newitems, currentPage, itemsPerPage, itemsPerBlock, currentBlock } = state
 
     return <SoftFurContext.Provider value={{
-        fetchData, fetchProduct, setLoader, fetchNewItems, paginate, paginateBlock, fetchItemsByModel,
-        content, product, loader, newitems, currentPage, itemsPerPage, itemsPerBlock, itemsByModels, currentBlock
+        fetchData, fetchProduct, setLoader, fetchNewItems, paginate, paginateBlock,
+        content, product, loader, newitems, currentPage, itemsPerPage, itemsPerBlock, currentBlock
     }}>
         {children}
     </SoftFurContext.Provider>

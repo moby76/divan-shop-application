@@ -8,7 +8,7 @@ export const Navbar = () => (
                 <NavLink to="/soft-furniture" className="nav-link">Мягкая Мебель</ NavLink> 
             </li>
             <li className="nav-item">
-            <NavLink to="/articles" className="nav-link">Статьи</NavLink>
+            <NavLink to="/models" className="nav-link">Модели</NavLink>
             </li>
         </ul>
     </nav>

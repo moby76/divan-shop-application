@@ -1,26 +1,41 @@
-import { Fragment, useContext, useEffect } from "react"
-import { TermsListItem } from "../components/TermsListItem"
+//получаем массив моделей за исключением текущей и выводим их в списке/таблице
 
-export const ListOfTermsBlock = ({ terms }) => {
+// import { Fragment, useContext, useEffect } from "react"
+import { TermsTableItem } from "../components/TermsTableItem"
 
-    // console.log(terms)
+export const ListOfTermsBlock = ({ termModels, productModelName }) => {
+
+  //отфильтровать массив с терминами таксономии "Модели" - исключив из него модель отображаемого товара. Для блока списка моделей
+  const excludeCurrentModel = termModels.filter((callback) => {//получим новый массив со значениями: исключить текущего объекта, но оставить все остальные из той-же модели
+    return callback.name !== productModelName
+  })
+  //получаем новый массив excludeCurrentModel --^
 
     return (
-        
-        <div className="container-fluid">
+        <div>
             <div className="col-sm-12 text-center"> <h3>Посмотреть другие модели</h3></div>
-            <hr/>
-            <ul className="list-group mb-4">
-                {terms.map((term) => {
-                    // console.log(term)
-                    return (
-                        <TermsListItem 
-                            {...term}
-                        />
+            <hr />
+            <table className="table table table-dark">
+                <tbody>
+                    {excludeCurrentModel.map((term) => { //извлекаем/итерируем данные из массива моделей и ложим каждый из элементов в term
+                        // console.log(term['scheme'][0]['filename'])                            
+                        return (
+                            <TermsTableItem key={term.id}
+                                // id={term.id}
+                                // name={term.name}
+                                // scheme={term.scheme}
+                                {...term}
+                            />
+                        )
+                    }
                     )
-                }
-                )}
-            </ul>
-        </div >
+
+                    }
+
+                    {/* {newTerms} */}
+
+                </tbody>
+            </table>
+        </div>
     )
 }

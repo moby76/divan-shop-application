@@ -6,7 +6,7 @@ export const PaginationBlock = ({current, urlName}) => {
     
     // { itemsPerPage, totalItems } --^
 
-    const { itemsPerBlock, content, paginateBlock } = useContext(SoftFurContext)
+    const { itemsPerBlock, paginateBlock } = useContext(SoftFurContext)
 
     const pageNumbers = []
     const totalItems = current.length

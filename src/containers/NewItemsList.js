@@ -20,8 +20,8 @@ export const NewItemsList = () => {
                 newitems.map((val) => {
                     return (
                         <Fragment>                            
-                            <div className="row mb-4" key={val.id}>
-                                <NewItem
+                            <div className="row mb-4" >
+                                <NewItem key={val.id}
                                     {...val}
                                 />
                             </div>

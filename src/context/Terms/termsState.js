@@ -7,7 +7,7 @@ import { TermsReducer } from "./termsReducer"
 export const TermsState = ({ children }) => {
 
     const initialState = {
-        termModels: [],
+        termModels: [],        
         termSingleModel: {},
         loader: false
     }
@@ -17,7 +17,7 @@ export const TermsState = ({ children }) => {
     const fetchTermsModel = async () => {
         setLoader()
         const value = await API.get(
-            `taxonomy_term/models`
+            `taxonomy_term/models?include=scheme`
         )
         dispatch({
             type: GET_MODELS,
@@ -35,6 +35,12 @@ export const TermsState = ({ children }) => {
             payload: value.data.data
         })
     } 
+
+    // function delay(ms) {
+    //     
+    //   }
+      
+    //   delay(3000).then(() => alert('выполнилось через 3 секунды'));
 
     //метод изменения состояния лоадера
     const setLoader = () => {
