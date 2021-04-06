@@ -14,7 +14,7 @@ export const NewItem = ({ title, price_base, photo, soft_config, id, available }
                         <h5 className="card-title">{title}</h5>
                     </div>
                     {/* <img src={`http://api.divan-shop.loc/${photo.uri.url}`} alt={photo.filename} className="card-img-top p-3" /> */}
-                    <img src={`${basePath}${photo.uri.url}`} alt={photo.filename} className="card-img-top p-3" />
+                    <img src={`${basePath}${photo[0].uri.url}`} alt={photo[0].filename} className="card-img-top p-3" />
                     <div className="card-body">
                         {/* <h5 className="card-text"></h5> */}
                         {/* <Link to={`/soft-furniture/${id}`} className="btn btn-primary">Открыть</ Link > */}
