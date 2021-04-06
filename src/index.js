@@ -6,16 +6,20 @@ import { SoftFurState } from './context/SoftFur/SoftfurState'
 import reportWebVitals from './reportWebVitals';
 import { TermsState } from './context/Terms/termsState';
 import { AlertState } from './context/alert/alertState';
+import { PaginationContext } from './context/pagination/paginationContext';
+import { PaginationState } from './context/pagination/paginationState';
 
 ReactDOM.render(
   // <React.StrictMode>
+  <PaginationState>
   <AlertState>
   <TermsState>
   <SoftFurState>
       <App />
   </SoftFurState>
   </TermsState>
-  </AlertState>,
+  </AlertState>
+  </PaginationState>,
   // </React.StrictMode>,
   document.getElementById('root')
 );

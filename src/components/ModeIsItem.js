@@ -1,3 +1,6 @@
+//Формируем элемент краткого описания модели на странице Модели
+//Инкапсулируется в <Models>
+
 import { Link } from "react-router-dom";
 import basePath from '../utils/basePath'
 // import { SoftFurContext } from "../context/SoftFur/SoftFurContext"
@@ -5,6 +8,7 @@ import basePath from '../utils/basePath'
 export const ModeIsItem = ({ name, model_desc, scheme, id }) => {
 
     // console.log(price_base, soft_config.name, JSON.stringify(available))
+    console.log("Краткое описание", model_desc.summary)
 
     return (
         <>

@@ -1,4 +1,4 @@
-import { GET_NEWITEMS, GET_PRODUCT, GET_PRODUCTS, SET_LOADING, SET_PAGINATE, SET_PAGINATE_BLOCK } from "../types";
+import { GET_NEWITEMS, GET_PRODUCT, GET_PRODUCTS, SET_LOADING } from "../types";
 
 export const SoftFurReducer = (state, action) => {
     switch (action.type) {
@@ -12,14 +12,13 @@ export const SoftFurReducer = (state, action) => {
             return {
                 ...state,
                 // product: action.payload, 
-                product: {
+                product: action.payload,
                     title: action.payload.title,
-                    price: action.payload.price_base,
-                    config: action.payload.soft_config.name,
-                    img_url: action.payload.photo.uri.url,
+                    basePrice: action.payload.price_base,
+                    config: action.payload.soft_config,
+                    photo: action.payload.photo,
                     img_alt: action.payload.photo.filename,
-                    productModelName: action.payload.model.name
-                },
+                    productModelName: action.payload.model.name,
                 loader: false
             }
         case GET_NEWITEMS:
@@ -31,23 +30,23 @@ export const SoftFurReducer = (state, action) => {
         // case GET_ITEMS_BY_MODEL:
         //     return {
         //         ...state,
-        //         itemsByModels: action.payload,
+        //         ItemsByModelsOfProduct: action.payload,
         //         loader: false
         //     }
-        case SET_LOADING:
-            return { ...state, loader: true }
-        case SET_PAGINATE:
-            return {
-                ...state,
-                // loader: true 
-                currentPage: action.value
-            }
-        case SET_PAGINATE_BLOCK:
-            return {
-                ...state,
-                loader: false, 
-                currentBlock: action.value
-            }
+        // case SET_LOADING:
+        //     return { ...state, loader: true }
+        // case SET_PAGINATE:
+        //     return {
+        //         ...state,
+        //         // loader: true 
+        //         currentPage: action.value
+        //     }
+        // case SET_PAGINATE_BLOCK:
+        //     return {
+        //         ...state,
+        //         loader: false, 
+        //         currentBlock: action.value
+        //     }
         default: return state
     }
 }

@@ -18,9 +18,10 @@ export const GET_SINGLE_MODEL = 'GET_SINGLE_MODEL'
 
 
 export const SET_LOADING = 'SET_LOADING'
-export const SET_PAGINATE = 'SET_PAGINATE'
+export const SET_PAGINATE_PAGE = 'SET_PAGINATE_PAGE'
 export const SET_PAGINATE_BLOCK = 'SET_PAGINATE_BLOCK'
 
 export const SHOW_ALERT = 'SHOW_ALERT'
 export const HIDE_ALERT = 'HIDE_ALERT'
 
+export const FETCH_ERROR = 'FETCH_ERROR'

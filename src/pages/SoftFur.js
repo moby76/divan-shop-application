@@ -2,8 +2,10 @@
 // import API from '../utils/api'
 import React, { useContext, useEffect } from "react";
 import { Card } from '../components/Card';
-import { Pagination } from "../components/navigation/pagination";
+import { PaginationPage } from "../utils/navigation/paginationPage";
 import { SoftFurContext } from '../context/SoftFur/SoftFurContext';
+import { PaginationContext } from "../context/pagination/paginationContext";
+// import { PaginationContext } from "../context/pagination/paginationContext";
 
 // function isValidData(data) {
 //   if (data === null) {
@@ -24,16 +26,19 @@ import { SoftFurContext } from '../context/SoftFur/SoftFurContext';
 export const SoftFur = () => {
   // const [content, setContent] = useState([]);
 
-  const { fetchData, content, currentPage, itemsPerPage, loader } = useContext(SoftFurContext)
+  const { fetchData, content, loader } = useContext(SoftFurContext)
+  const { currentPage, itemsPerPage } = useContext(PaginationContext)
 
   useEffect(() => {
     fetchData()
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+
+  //Вычисление значений для интервала отображаемых элементов на странице. Для пагинации
   const indexofLastItems = currentPage * itemsPerPage
   const indexOfFirstItems = indexofLastItems - itemsPerPage
+  // Создание нового массива на основе полученного, в который будет попадать только значения из интервала
   const currentItems = content.slice(indexOfFirstItems, indexofLastItems)
   // console.log(content[0])
 
@@ -45,7 +50,7 @@ export const SoftFur = () => {
           <p className="text-center">...Идёт загрузка</p> :
           currentItems.map((val) => {
             return(
-              // <h5>sfsfdsf</h5>
+              
               <div className="col-sm-4 mb-4" key={val.id}>
                 <Card
                   {...val}
@@ -55,7 +60,7 @@ export const SoftFur = () => {
           })
         }           
       </div>
-      <Pagination
+      <PaginationPage
         // totalItems={content.length}
         // itemsPerPage={itemsPerPage}
       />
