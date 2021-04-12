@@ -1,5 +1,5 @@
 //Формируем элемент краткого описания модели на странице Модели
-//Инкапсулируется в <Models>
+//Инкапсулируется в <ModelsContainer> - container/modelsContainer.js
 
 import { Link } from "react-router-dom";
 import basePath from '../utils/basePath'

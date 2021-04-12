@@ -1,3 +1,6 @@
+// Контейнер с описанием товара в виде табов/якорных ссылок и контента вызываемого ими
+// Инкапсулирован в страницу описания товара - pages/ProdDesc.js
+
 // import React from 'react'
 
 import { Fragment } from "react";
@@ -10,7 +13,7 @@ import Filling from "../components/softFurniture/filling";
 import Scheme from "../components/softFurniture/scheme";
 import Transformation from "../components/softFurniture/transformation";
 
-function Specifications({ available, config, transformation, filling, productModelScheme, dimensions, productModelDesc, features, productModelName }) {
+function Specifications({ available, config, transformation, filling, productModelScheme, dimensions, productModelDesc, features, productModelName, productModelId }) {
     return (
         <div className="container">
 
@@ -36,7 +39,7 @@ function Specifications({ available, config, transformation, filling, productMod
 
             {/* контент для табов (ссылок) --^ */}
 
-            <div className="tab-content pt-3">
+            <div className="tab-content pt-3" style={{height: 300, overflowX: "hidden", overflowY: "auto"}}>
                 {/* блок характеристик товара */}
                 <div className="tab-pane fade show active" id="characteristics">
                     <div className="row">
@@ -68,34 +71,25 @@ function Specifications({ available, config, transformation, filling, productMod
                         </div>
                     </div>
                 </div>
-                <div className="tab-pane fade show" id="scheme">
+                <div className="tab-pane fade" id="scheme">
                     <div className="row">
                         <div className="col-sm-8"><Scheme scheme={productModelScheme} /></div>
                         <div className="col-sm-4"><Dimensions dimensions={dimensions} /></div>
                     </div>
                 </div>
-                <div className="tab-pane fade show" id="description">
+                <div className="tab-pane fade" id="description">
                     <div className="row">
                         <div className="col-sm-12">
                             <Description
                                 modelDesc={productModelDesc}
                                 modelName={productModelName}
+                                id={productModelId}//id модели для формирования сылки на страницу модели  
                             />
                         </div>
                     </div>
                 </div>
+                <div className="tab-pane fade" id="available">...</div>
             </div>
-
-            {/* <div className="row">
-                <Filling filling={filling} />
-            </div> */}
-
-
-
-
-
-
-
 
         </div>
     )
