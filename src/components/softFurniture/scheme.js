@@ -9,7 +9,7 @@ function Scheme({ scheme }) {
 						{scheme && scheme.length > 0 ? scheme.map((item) => {
 							return (
 								<div className="col-sm-6 mb-3" key={item.id}>
-									<img src={`${basePath}${item.uri.url}`} className="img-fluid" />
+									<img src={`${basePath}${item.uri.url}`} alt={item.filename} className="img-fluid" />
 									{/* <sub>{item.uri.url}</sub> */}
 								</div>
 							)

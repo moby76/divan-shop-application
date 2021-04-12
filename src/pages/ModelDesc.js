@@ -1,19 +1,19 @@
 //Описание модели Мягкой мебели
 
-import { Fragment, useContext, useEffect, useState } from "react"
+import { Fragment, useContext, useEffect } from "react"
 import { ItemsByModels } from "../containers/itemsByModels"
 import { SoftFurContext } from "../context/SoftFur/SoftFurContext"
 // import { SoftFurContext } from "../context/SoftFur/SoftFurContext"
 import { TermsContext } from "../context/Terms/termsContext"
-import API from "../utils/api"
+// import API from "../utils/api"
 import basePath from "../utils/basePath"
 
 export const ModelDesc = ({ match }) => {
 
     const urlModelName = match.params.id
 
-    const { fetchSingleModel, termSingleModel, scheme, description, loader, error } = useContext(TermsContext)
-    const { fetchData, content } = useContext(SoftFurContext)
+    const { fetchSingleModel, termSingleModel, scheme, description, loader } = useContext(TermsContext)
+    const { fetchData } = useContext(SoftFurContext)
 
     useEffect(() => {
         setTimeout(() => {
@@ -26,7 +26,7 @@ export const ModelDesc = ({ match }) => {
         setTimeout(() => {
             fetchData()//
         }, 1000);
-    }, [termSingleModel])
+    }, [termSingleModel, fetchData])
 
     // //отфильтровать массив content выводящий товары той-же модели что и отображаемый исключив из него текущий. Для блока товаров из той-же модели
     // const currentModelItems = content.filter(callback => {//получим новый массив со значениями: исключить текущего объекта, но оставить все остальные из той-же модели
@@ -65,7 +65,7 @@ export const ModelDesc = ({ match }) => {
                     {scheme.length > 0 ? scheme.map((item) => {
                         return (
                             <div className="col-sm-4 mb-3" key={item.id}>
-                                <img src={`${basePath}${item.uri.url}`} className="img-fluid" />
+                                <img src={`${basePath}${item.uri.url}`} alt={item.filename} className="img-fluid" />
                                 {/* <sub>{item.uri.url}</sub> */}
                             </div>
                         )

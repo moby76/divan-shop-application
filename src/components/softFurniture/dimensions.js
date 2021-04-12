@@ -9,7 +9,7 @@ function Dimensions({ dimensions }) {
 						{dimensions && dimensions.length > 0 ?
 							dimensions.map(item => (
 								<div className="col-sm-12 mb-3" key={item.id}>
-									<img src={`${basePath}${item.uri.url}`} className="img-fluid" />
+									<img src={`${basePath}${item.uri.url}`} alt={item.filename} className="img-fluid" />
 								</div>
 							)
 							)

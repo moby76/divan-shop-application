@@ -17,8 +17,7 @@ export const ModelsContainer = () => {
     useEffect(() => {
         setTimeout(() => {
             fetchTermsModel()
-            // eslint-disable-next-line react-hooks/exhaustive-deps   
-            console.log('i fire from Models useEffect')
+            // console.log('i fire from Models useEffect')
         }, 1000);
         // eslint-disable-next-line react-hooks/exhaustive-deps 
     }, [])
@@ -40,7 +39,7 @@ export const ModelsContainer = () => {
                                 <ModeIsItem
                                     {...model}
                                 />
-                            </div>                           
+                            </div>
                         </Fragment>
                     )
                 })

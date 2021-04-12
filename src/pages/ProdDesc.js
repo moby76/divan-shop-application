@@ -1,4 +1,4 @@
-import { Fragment, useContext, useEffect, useState } from "react"
+import { Fragment, useContext, useEffect } from "react"
 import { ItemsByModelsOfProduct } from '../containers/itemsByModelsOfProduct'
 import { ListOfTermsBlock } from "../containers/listOfTermsBlock"
 import Specifications from "../containers/Specifications"
@@ -11,18 +11,18 @@ export const ProdDesc = ({ match }) => {
 
 	const urlName = match.params.id
 
-	const { fetchData, fetchProduct, content, product, loader, productModelName, productModelId, photo, config, basePrice, transformation, filling, productModelScheme, dimensions, productModelDesc, features } = useContext(SoftFurContext)
-	const { fetchTermsModel, termModels, fetchSingleModel, termSingleModel } = useContext(TermsContext)
+	const { fetchData, fetchProduct, content, product, loader, productModelName, productModelId, photo, config, transformation, filling, productModelScheme, dimensions, productModelDesc, features } = useContext(SoftFurContext)
+	const { fetchTermsModel, termModels } = useContext(TermsContext)
 	// const { title, price, config, img_url, img_alt, productModelName } = product//свойства из продукта
 
-	const [mounted, setMounted] = useState(true)
+	// const [mounted, setMounted] = useState(true)
 
 	//  const urlName = productModelId
-	useEffect(() => {
-		setTimeout(() => {
-			setMounted(false)
-		}, 100);
-	}, [])
+	// useEffect(() => {
+	// 	setTimeout(() => {
+	// 		setMounted(false)
+	// 	}, 100);
+	// }, [])
 
 	//вызов ф-ции получения конкретного продукта по urlName(uuid) из контекста SoftFurContext
 	useEffect(() => {
@@ -35,8 +35,9 @@ export const ProdDesc = ({ match }) => {
 			//   console.log('Unmounting')
 			//   setMounted(false)
 			// }
-			// eslint-disable-next-line react-hooks/exhaustive-deps
+			
 		}, 1000);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	//вызов ф-ции получения всех товаров мягкой мебели из контекста SoftFurContext
@@ -51,7 +52,7 @@ export const ProdDesc = ({ match }) => {
 			// mounted = false
 			// }
 		}, 1000);
-
+		// eslint-disable-next-line
 	}, [])
 
 	//вызов ф-ции получения списка моделей
@@ -68,6 +69,7 @@ export const ProdDesc = ({ match }) => {
 		//   // mounted = false
 		// }
 		// // return fetchTermsModel()
+		// eslint-disable-next-line
 	}, [])
 
 	//получить модель текущего товара отфильтровав массив моделей termModels
@@ -81,7 +83,7 @@ export const ProdDesc = ({ match }) => {
 	})
 
 	// console.log(productModelScheme)
-	console.log(features)
+	// console.log(photo)
 
 	if (loader) {
 		return <p className="text-center">...Идёт загрузка</p>
@@ -102,7 +104,7 @@ export const ProdDesc = ({ match }) => {
 							return (
 								<Fragment>
 									<div className="col-sm-4 mb-3" key={item.id}>
-										<img src={`${basePath}${item.uri.url}`} className="img-fluid" />
+										<img src={`${basePath}${item.uri.url}`} alt={item.filename} className="img-fluid" />
 										{/* <sub>{item.uri.url}</sub> */}
 									</div>
 								</Fragment>

@@ -3,7 +3,7 @@
 
 import { useContext, useEffect } from "react";
 
-import { SoftFurContext } from "../context/SoftFur/SoftFurContext"
+// import { SoftFurContext } from "../context/SoftFur/SoftFurContext"
 import { PaginationContext } from "../context/pagination/paginationContext";
 import { AlertContext } from "../context/alert/alertContext";
 

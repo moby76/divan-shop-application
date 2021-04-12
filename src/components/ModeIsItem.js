@@ -8,7 +8,7 @@ import basePath from '../utils/basePath'
 export const ModeIsItem = ({ name, model_desc, scheme, id }) => {
 
     // console.log(price_base, soft_config.name, JSON.stringify(available))
-    console.log("Краткое описание", model_desc.summary)
+    // console.log("Краткое описание", model_desc.summary)
 
     return (
         <>

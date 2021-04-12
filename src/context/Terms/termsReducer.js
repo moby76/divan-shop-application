@@ -1,4 +1,4 @@
-import basePath from "../../utils/basePath";
+// import basePath from "../../utils/basePath";
 import { GET_MODELS, GET_SINGLE_MODEL, SET_LOADING, FETCH_ERROR } from "../types";
 
 export const TermsReducer = (state, action) => {

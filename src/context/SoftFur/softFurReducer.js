@@ -1,4 +1,4 @@
-import { GET_NEWITEMS, GET_PRODUCT, GET_PRODUCTS, SET_LOADING } from "../types";
+import { GET_NEWITEMS, GET_PRODUCT, GET_PRODUCTS } from "../types";
 
 export const SoftFurReducer = (state, action) => {
     switch (action.type) {

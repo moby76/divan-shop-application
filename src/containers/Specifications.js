@@ -3,8 +3,8 @@
 
 // import React from 'react'
 
-import { Fragment } from "react";
-import { NavLink } from "react-router-dom";
+// import { Fragment } from "react";
+// import { NavLink } from "react-router-dom";
 import Config from "../components/softFurniture/config";
 import Description from "../components/softFurniture/description";
 import Dimensions from "../components/softFurniture/dimensions";
