@@ -16,10 +16,10 @@ export const TermsReducer = (state, action) => {
             return {
                 ...state,
                 termSingleModel: action.payload,
-                description: action.payload.model_desc.value,
-                name: action.payload.name,
-                scheme: action.payload.scheme,                
-                loader: false,
+                    description: action.payload.model_desc.value,
+                    name: action.payload.name,
+                    scheme: action.payload.scheme,                
+                    loader: false,
                 error: ''
             }
         case FETCH_ERROR:

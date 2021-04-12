@@ -15,27 +15,6 @@ export const ModelDesc = ({ match }) => {
     const { fetchSingleModel, termSingleModel, scheme, description, loader, error } = useContext(TermsContext)
     const { fetchData, content } = useContext(SoftFurContext)
 
-    // const [mounted, setMounted] = useState(true)
-    // const [isLoading, setIsLoading] = useState(true)
-    // const [model, setModel] = useState({})
-    // const [description, setDescription] = useState(null)
-    // const [scheme, setScheme] = useState([])
-
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         API.get(
-    //             `taxonomy_term/models/${urlModelName}?include=scheme`
-    //         )
-    //             .then(value => {
-    //                 setModel(value.data.data)
-    //                 setDescription(value.data.data.model_desc.value)
-    //                 setIsLoading(false)
-    //                 setScheme(value.data.data.scheme)
-    //             })
-
-    //     }, 1000);
-    // }, [0])
-
     useEffect(() => {
         setTimeout(() => {
             fetchSingleModel(urlModelName)
@@ -63,49 +42,44 @@ export const ModelDesc = ({ match }) => {
         return <p className="mb-1" key={i}>{item}</p>
     })
 
-    let thisScheme = Array.from(scheme).map((item) => {
-        return (
-            <div className="col-sm-4 mb-3" key={item.id}>
-                <img src={`${basePath}${item.uri.url}`} className="img-fluid" />
-                {/* <sub>{item.uri.url}</sub> */}
-            </div>
-        )
-    })
-
     const { name } = termSingleModel
-    console.log("Модель", termSingleModel)
-    // console.log("Описание Модели", description)
-    // console.log("Описание Модели", termSingleModel)
-    // console.log("Название Модели", name)
-    console.log("Схема Модели", scheme)
-    // console.log("Краткое описание Модели", model.model_desc.value)
-    // console.log(scheme[0].uri.url)
 
-    // if (loader) {
-    //     return <p className="text-center">...Идёт загрузка</p>
-    // } else {
-    return (
-        // isLoading ? '...Loading' :
-        <Fragment>
-            {/* <ModelDesc
+    // console.log("Модель", termSingleModel)
+
+    if (loader) {
+        return <p className="text-center">...Идёт загрузка</p>
+    } else {
+        return (
+            // isLoading ? '...Loading' :
+            <Fragment>
+                {/* <ModelDesc
                 /> */}
-            <h3 className="col-sm-12 text-center">Модель {name}</h3>    
-            <div className="row">
-                {thisDescription}
-                <hr/>
-            </div>
+                <h3 className="col-sm-12 text-center">Модель {name}</h3>
+                <div className="row">
+                    {thisDescription}
+                    <hr />
+                </div>
 
-            <div className="row">
-                {thisScheme}
-            </div>
-            <ItemsByModels // компонент в котором Подгружаем список товаров по модели текущего товара
-                urlName={urlModelName}//передача uuid товара в блок отображения других товаров из той-же модели
-                // currentModelItems={currentModelItems}
-                // content={content}
-                termName={name}
-                term={termSingleModel}
-            />
-        </Fragment>
-    )
-    // }
+                <div className="row">
+
+                    {scheme.length > 0 ? scheme.map((item) => {
+                        return (
+                            <div className="col-sm-4 mb-3" key={item.id}>
+                                <img src={`${basePath}${item.uri.url}`} className="img-fluid" />
+                                {/* <sub>{item.uri.url}</sub> */}
+                            </div>
+                        )
+                    }) : <p>Схемы нет</p>
+                    }
+                </div>
+                <ItemsByModels // компонент в котором Подгружаем список товаров по модели текущего товара
+                    urlName={urlModelName}//передача uuid товара в блок отображения других товаров из той-же модели
+                    // currentModelItems={currentModelItems}
+                    // content={content}
+                    termName={name}
+                    term={termSingleModel}
+                />
+            </Fragment>
+        )
+    }
 }

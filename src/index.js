@@ -8,6 +8,7 @@ import { TermsState } from './context/Terms/termsState';
 import { AlertState } from './context/alert/alertState';
 import { PaginationContext } from './context/pagination/paginationContext';
 import { PaginationState } from './context/pagination/paginationState';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 ReactDOM.render(
   // <React.StrictMode>

@@ -13,7 +13,7 @@ export const ListOfTermsBlock = ({ termModels, productModelName }) => {
 
     return (
         <div>
-            <div className="col-sm-12 text-center"> <h3>Посмотреть другие модели</h3></div>
+            <div className="col-sm-12 text-center"> <h5>Посмотреть другие модели</h5></div>
             <hr />
             <table className="table table table-dark">
                 <tbody>

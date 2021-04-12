@@ -19,6 +19,13 @@ export const SoftFurReducer = (state, action) => {
                     photo: action.payload.photo,
                     img_alt: action.payload.photo.filename,
                     productModelName: action.payload.model.name,
+                    productModelScheme: action.payload.model.scheme,
+                    productModelId: action.payload.model.id,
+                    transformation: action.payload.transformation,
+                    filling: action.payload.filling,
+                    dimensions: action.payload.dimensions.image,
+                    productModelDesc: action.payload.model.model_desc.summary,
+                    features: action.payload.features,
                 loader: false
             }
         case GET_NEWITEMS:

@@ -16,8 +16,14 @@ export const SoftFurState = ({ children }) => {
         config: {},//Конфигурация мебели данного товара
         loader: false,
         photo: [], //фотографии объекта(массивоподобный объект)
-        productModel: {},//модель продукта
-        productModelName: ''//название модели продукта(string)
+        productModelId: '',//uuid модель продукта
+        productModelName: '',//название модели продукта(string)
+        productModelScheme: '',//схема модели продукта(string)
+        productModelDesc: '',//краткое описание модели товара
+        transformation: [], //Трансформации мебели(массив объектов)
+        filling: [],//Наполнение матрасов
+        dimensions: [], //габариты
+        features: ''//особенности/отличия товара отбазовой модели 
     }
 
     const [state, dispatch] = useReducer(SoftFurReducer, initialState)
@@ -38,14 +44,13 @@ export const SoftFurState = ({ children }) => {
     const fetchProduct = async (url) => {
         setLoader()
         const prodVal = await API.get(
-            `node/soft_fur/${url}?include=photo,soft_config,model`
+            `node/soft_fur/${url}?include=photo,soft_config,transformation,filling,model,model.scheme,dimensions,dimensions.image&fields[node--dimensions]=image&fields[taxonomy_term--filling]=name`
         )
         dispatch({
             type: GET_PRODUCT,//данный тип оказывает влияние на объект product - загружает его из  jsonapi, а так-же деактивирует loader(false)
             payload: prodVal.data.data
         })
 
-        // console.log("eeerrttt")
     }
 
     //Запрос на получение данных для формирования списка новинок
@@ -81,11 +86,11 @@ export const SoftFurState = ({ children }) => {
         })
     }
 
-    const { content, product, loader, newitems, productModelName, productModel, photo, config, basePrice  } = state
+    const { content, product, loader, newitems, productModelName, productModelId, photo, config, basePrice, transformation, filling, productModelScheme, dimensions, productModelDesc, features} = state
 
     return <SoftFurContext.Provider value={{
         fetchData, fetchProduct, setLoader, fetchNewItems,
-        content, product, loader, newitems, productModelName, productModel, photo, config, basePrice
+        content, product, loader, newitems, productModelName, productModelId, photo, config, basePrice, transformation, filling, productModelScheme, dimensions, productModelDesc, features
     }}>
         {children}
     </SoftFurContext.Provider>

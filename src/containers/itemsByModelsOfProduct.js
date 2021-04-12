@@ -11,17 +11,17 @@ import { Alert } from "../components/Alert";
 import { Card } from "../components/Card";
 import { PaginationBlock } from "../utils/navigation/paginationBlock";
 
-export const ItemsByModelsOfProduct = ({ urlName, productModelName, product }) => {
+export const ItemsByModelsOfProduct = ({ urlName, productModelName, product, currentModelItems }) => {
 
-    const { content } = useContext(SoftFurContext)//объекты из контекста Мягкой мебели
+    // const { content } = useContext(SoftFurContext)//объекты из контекста Мягкой мебели
     const { currentBlock, itemsPerBlock } = useContext(PaginationContext)//объекты из контекста Пагинации
     const { hide, show } = useContext(AlertContext)//получение функции для скрытия Алерта из контекста 
 
-    //отфильтровать массив content выводящий товары той-же модели что и отображаемый исключив из него текущий. Для блока товаров из той-же модели
-    const currentModelItems = content.filter(callback => {//получим новый массив со значениями: исключить текущего объекта, но оставить все остальные из той-же модели
-        return callback.id !== urlName && callback.model.name === productModelName
-    })
-    //получаем массив current --^
+    // //отфильтровать массив content выводящий товары той-же модели что и отображаемый исключив из него текущий. Для блока товаров из той-же модели
+    // const currentModelItems = content.filter(callback => {//получим новый массив со значениями: исключить текущего объекта, но оставить все остальные из той-же модели
+    //     return callback.id !== urlName && callback.model.name === productModelName
+    // })
+    //получаем массив currentModelItems --^
 
     //запуск функции для показа или скрытия алерта
     useEffect(() => {
@@ -45,7 +45,7 @@ export const ItemsByModelsOfProduct = ({ urlName, productModelName, product }) =
     const currentItems = currentModelItems.slice(indexOfFirstItems, indexofLastItems)
 
     // console.log("Из той-же модели : ", current)
-    console.log(content)
+    // console.log(content)
 
     return (
         <div className="container">
