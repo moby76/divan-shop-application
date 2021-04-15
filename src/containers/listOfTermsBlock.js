@@ -15,16 +15,16 @@ export const ListOfTermsBlock = ({ termModels, productModelName }) => {
         <div>
             <div className="col-sm-12 text-center"> <h5>Посмотреть другие модели</h5></div>
             <hr />
-            <table className="table table table-dark">
+            <table className="table table-responsive-sm table-striped table-dark">
                 <tbody>
                     {excludeCurrentModel.map((term) => { //извлекаем/итерируем данные из массива моделей и ложим каждый из элементов в term
-                        // console.log(term['scheme'][0]['filename'])                            
+                        // console.log(term['scheme'][0])                            
                         return (
                             <TermsTableItem key={term.id}
-                                // id={term.id}
-                                // name={term.name}
-                                // scheme={term.scheme}
-                                {...term}
+                                id={term.id}
+                                name={term.name}
+                                scheme={term.scheme}
+                                // {...term}
                             />
                         )
                     }

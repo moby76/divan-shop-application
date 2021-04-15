@@ -34,8 +34,8 @@ export const ProdDesc = ({ match }) => {
 			// return () => {
 			//   console.log('Unmounting')
 			//   setMounted(false)
-			// }
-			
+			// }		
+			console.log('useEffect 1 (fetchProduct)')	
 		}, 1000);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
@@ -51,7 +51,8 @@ export const ProdDesc = ({ match }) => {
 			// return () => {
 			// mounted = false
 			// }
-		}, 1000);
+			console.log('useEffect 2 (fetchData)')
+		}, 1500);
 		// eslint-disable-next-line
 	}, [])
 
@@ -63,10 +64,10 @@ export const ProdDesc = ({ match }) => {
 			fetchTermsModel()
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 			// }
-		}, 1000)
+			console.log('useEffect 3 (fetchTermsModel)')
+		}, 2500)
 		// return () => {
-		//   console.log("fired from ProdDesc")
-		//   // mounted = false
+		// mounted = false
 		// }
 		// // return fetchTermsModel()
 		// eslint-disable-next-line
@@ -102,8 +103,8 @@ export const ProdDesc = ({ match }) => {
 						{/* {thisPhoto} */}
 						{photo.length > 0 ? photo.map((item) => {
 							return (
-								<Fragment>
-									<div className="col-sm-4 mb-3" key={item.id}>
+								<Fragment key={item.id}>
+									<div className="col-sm-4 mb-3" >
 										<img src={`${basePath}${item.uri.url}`} alt={item.filename} className="img-fluid" />
 										{/* <sub>{item.uri.url}</sub> */}
 									</div>
