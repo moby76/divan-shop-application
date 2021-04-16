@@ -8,9 +8,10 @@ export const NewItem = ({ title, price_base, photo, soft_config, id, available }
 
     // console.log(price_base, soft_config.name, JSON.stringify(available))
 
+    //Опции для Лайтбокса
     const options = {
         settings: {
-            // overlayColor: "rgb(25, 136, 124)",
+            overlayColor: "rgb(15 15 15 / 95%)",
             disableKeyboardControls: false,
             disableWheelControls: true,
             autoplaySpeed: 1500,
@@ -27,18 +28,7 @@ export const NewItem = ({ title, price_base, photo, soft_config, id, available }
         },
         caption: {
             showCaption: false,
-        },
-        // icons: {
-        //     autoplayIcon: null,
-        //     closeIcon: null,
-        //     downloadIcon: null,
-        //     fullscreenIcon: null,
-        //     nextIcon: null,
-        //     pauseIcon: null,
-        //     previousIcon: null,
-        //     thumbnailsIcon: null,
-        //     zoomOutIcon: null
-        // }, 
+        }, 
         thumbnails: {
             showThumbnails: false
         }

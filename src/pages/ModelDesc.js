@@ -1,6 +1,7 @@
 //Описание модели Мягкой мебели
 
 import { Fragment, useContext, useEffect } from "react"
+import { SRLWrapper } from "simple-react-lightbox"
 import { ItemsByModels } from "../containers/itemsByModels"
 import { SoftFurContext } from "../context/SoftFur/SoftFurContext"
 // import { SoftFurContext } from "../context/SoftFur/SoftFurContext"
@@ -15,6 +16,32 @@ export const ModelDesc = ({ match }) => {
     const { fetchSingleModel, termSingleModel, scheme, description, loader } = useContext(TermsContext)
     const { fetchData } = useContext(SoftFurContext)
 
+        //Опции для Лайтбокса
+        const options = {
+            settings: {
+                overlayColor: "rgb(15 15 15 / 95%)",
+                disableKeyboardControls: false,
+                disableWheelControls: true,
+                autoplaySpeed: 1500,
+                transitionSpeed: 300,
+            },
+            buttons: {
+                // backgroundColor: "#1b5245",
+                // iconColor: "rgba(126, 172, 139, 0.8)",
+                showDownloadButton: false,
+                showNextButton: true,
+                showPrevButton: true,
+                showThumbnailsButton: false,
+                showAutoplayButton: true,
+            },
+            caption: {
+                showCaption: false,
+            }, 
+            thumbnails: {
+                showThumbnails: true
+            }
+        }
+
     useEffect(() => {
         setTimeout(() => {
             fetchSingleModel(urlModelName)
@@ -27,16 +54,6 @@ export const ModelDesc = ({ match }) => {
             fetchData()//
         }, 1000);
     }, [termSingleModel, fetchData])
-
-    // //отфильтровать массив content выводящий товары той-же модели что и отображаемый исключив из него текущий. Для блока товаров из той-же модели
-    // const currentModelItems = content.filter(callback => {//получим новый массив со значениями: исключить текущего объекта, но оставить все остальные из той-же модели
-    //     return callback.id !== urlName && callback.model.name === productModelName
-    // })
-    // const { name, description, scheme } = termSingleModel
-
-    // let newDescription = description.split('\n').map((item, key) => {
-    //     return <span key={key}>{item}<br /></span>
-    // })
 
     const thisDescription = description.replace(/(<([^>]+)>)/ig, "").split('\n').map((item, i) => {
         return <p className="mb-1" key={i}>{item}</p>
@@ -58,20 +75,24 @@ export const ModelDesc = ({ match }) => {
                 <div className="row">
                     {thisDescription}
                     <hr />
-                </div>
-
-                <div className="row">
-
-                    {scheme.length > 0 ? scheme.map((item) => {
-                        return (
-                            <div className="col-sm-4 mb-3" key={item.id}>
-                                <img src={`${basePath}${item.uri.url}`} alt={item.filename} className="img-fluid" />
-                                {/* <sub>{item.uri.url}</sub> */}
+                </div>                
+                    {scheme.length > 0 ?                    
+                        <SRLWrapper options={options}>
+                            <div className="row">
+                            {scheme.map((item) => {
+                                return (
+                                    <div className="col-sm-4 mb-3" key={item.id}>
+                                        <a href={`${basePath}${item.uri.url}`}>
+                                            <img src={`${basePath}${item.uri.url}`} alt={item.filename} className="img-fluid" />
+                                        </a>
+                                    </div>
+                                )
+                            })}
                             </div>
-                        )
-                    }) : <p>Схемы нет</p>
+                        </SRLWrapper>                        
+                        : <p>Схемы нет</p>
                     }
-                </div>
+                
                 <ItemsByModels // компонент в котором Подгружаем список товаров по модели текущего товара
                     urlName={urlModelName}//передача uuid товара в блок отображения других товаров из той-же модели
                     // currentModelItems={currentModelItems}
