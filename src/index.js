@@ -9,17 +9,21 @@ import { AlertState } from './context/alert/alertState';
 // import { PaginationContext } from './context/pagination/paginationContext';
 import { PaginationState } from './context/pagination/paginationState';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import SimpleReactLightbox from 'simple-react-lightbox'
+
 
 ReactDOM.render(
   // <React.StrictMode>
   <PaginationState>
-  <AlertState>
-  <TermsState>
-  <SoftFurState>
-      <App />
-  </SoftFurState>
-  </TermsState>
-  </AlertState>
+    <AlertState>
+      <TermsState>
+        <SoftFurState>
+          <SimpleReactLightbox>
+            <App />
+          </SimpleReactLightbox>
+        </SoftFurState>
+      </TermsState>
+    </AlertState>
   </PaginationState>,
   // </React.StrictMode>,
   document.getElementById('root')

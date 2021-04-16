@@ -1,10 +1,48 @@
 import { Link } from "react-router-dom";
+import { SRLWrapper } from "simple-react-lightbox";
 import basePath from '../utils/basePath'
 // import { SoftFurContext } from "../context/SoftFur/SoftFurContext"
+
 
 export const NewItem = ({ title, price_base, photo, soft_config, id, available }) => {
 
     // console.log(price_base, soft_config.name, JSON.stringify(available))
+
+    const options = {
+        settings: {
+            // overlayColor: "rgb(25, 136, 124)",
+            disableKeyboardControls: false,
+            disableWheelControls: true,
+            autoplaySpeed: 1500,
+            transitionSpeed: 500,
+        },
+        buttons: {
+            // backgroundColor: "#1b5245",
+            // iconColor: "rgba(126, 172, 139, 0.8)",
+            showDownloadButton: false,
+            showNextButton: false,
+            showPrevButton: false,
+            showThumbnailsButton: false,
+            showAutoplayButton: false,
+        },
+        caption: {
+            showCaption: false,
+        },
+        // icons: {
+        //     autoplayIcon: null,
+        //     closeIcon: null,
+        //     downloadIcon: null,
+        //     fullscreenIcon: null,
+        //     nextIcon: null,
+        //     pauseIcon: null,
+        //     previousIcon: null,
+        //     thumbnailsIcon: null,
+        //     zoomOutIcon: null
+        // }, 
+        thumbnails: {
+            showThumbnails: false
+        }
+    }
 
     return (
         <>
@@ -13,8 +51,13 @@ export const NewItem = ({ title, price_base, photo, soft_config, id, available }
                     <div className="card-header">
                         <h5 className="card-title">{title}</h5>
                     </div>
+                    <SRLWrapper options={options}>
+                        <a href={`${basePath}${photo[0].uri.url}`}>
+                            <img src={`${basePath}${photo[0].uri.url}`} alt={photo[0].filename} className="card-img-top p-3" />
+                        </a>
+                    </SRLWrapper>
                     {/* <img src={`http://api.divan-shop.loc/${photo.uri.url}`} alt={photo.filename} className="card-img-top p-3" /> */}
-                    <img src={`${basePath}${photo[0].uri.url}`} alt={photo[0].filename} className="card-img-top p-3" />
+
                     <div className="card-body">
                         {/* <h5 className="card-text"></h5> */}
                         {/* <Link to={`/soft-furniture/${id}`} className="btn btn-primary">Открыть</ Link > */}
@@ -22,8 +65,8 @@ export const NewItem = ({ title, price_base, photo, soft_config, id, available }
                     </div>
                 </div>
             </div>
-            <div className="col d-flex flex-column">  
-                
+            <div className="col d-flex flex-column">
+
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">Стоимость: {price_base} руб.</li>
                     <li className="list-group-item">Конфигурация: {soft_config.name}</li>

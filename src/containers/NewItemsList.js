@@ -1,4 +1,5 @@
 import { Fragment, useContext, useEffect } from "react"
+// import { SRLWrapper } from "simple-react-lightbox"
 import { NewItem } from "../components/NewItem"
 import { SoftFurContext } from "../context/SoftFur/SoftFurContext"
 
@@ -14,22 +15,27 @@ export const NewItemsList = () => {
     return (
         <div className="container-fluid">
             <div className="col-sm-12 text-center"> <h3>Новинки</h3> </div>
-            <hr/>
+            <hr />
             {loader ?
                 <p className="text-center">...Идёт загрузка</p> :
-                newitems.map((val) => {
-                    return (
-                        <Fragment key={val.id}>                            
-                            <div className="row mb-4" >
-                                <NewItem 
+                // <SRLWrapper options={options}>
+                <div className="container">
+                    {newitems.map((val) => {
+                        return (
+                            // <Fragment key={val.id}>
+                            <div className="row mb-4" key={val.id}>
+                                <NewItem
                                     {...val}
                                 />
                             </div>
 
-                            <hr />
-                        </Fragment>
-                    )
-                })
+                            // <hr />
+                            // </Fragment>
+                        )
+                    })}
+                </div>
+
+                // </SRLWrapper>
             }
 
         </div>
