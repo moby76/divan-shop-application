@@ -6,7 +6,7 @@ function Features({ features }) {
             <h5>Особенности товара</h5>
             <div className="row">
                 {features ?
-                    features.value.split('\n').map((item, i) => {
+                    features.value.replace(/(<([^>]+)>)/ig, "").split('\n').map((item, i) => {
                         return <p className="mb-1" key={i}>{item}</p>
                     })
                     :
