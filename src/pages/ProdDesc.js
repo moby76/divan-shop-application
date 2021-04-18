@@ -1,4 +1,7 @@
+//Страница описания товара
+
 import { Fragment, useContext, useEffect } from "react"
+import { SRLWrapper } from "simple-react-lightbox"
 import { ItemsByModelsOfProduct } from '../containers/itemsByModelsOfProduct'
 import { ListOfTermsBlock } from "../containers/listOfTermsBlock"
 import Specifications from "../containers/Specifications"
@@ -15,27 +18,40 @@ export const ProdDesc = ({ match }) => {
 	const { fetchTermsModel, termModels } = useContext(TermsContext)
 	// const { title, price, config, img_url, img_alt, productModelName } = product//свойства из продукта
 
-	// const [mounted, setMounted] = useState(true)
-
-	//  const urlName = productModelId
-	// useEffect(() => {
-	// 	setTimeout(() => {
-	// 		setMounted(false)
-	// 	}, 100);
-	// }, [])
+	        //Опции для Лайтбокса
+			  const options = {
+            settings: {
+                overlayColor: "rgb(15 15 15 / 95%)",
+                disableKeyboardControls: false,
+                disableWheelControls: true,
+                autoplaySpeed: 1500,
+                transitionSpeed: 100,
+            },
+            buttons: {
+                // backgroundColor: "#1b5245",
+                // iconColor: "rgba(126, 172, 139, 0.8)",
+                showDownloadButton: false,
+                showNextButton: true,
+                showPrevButton: true,
+                showThumbnailsButton: false,
+                showAutoplayButton: true,
+            },
+            caption: {
+                showCaption: false,
+            }, 
+            thumbnails: {
+                showThumbnails: true
+            }
+        }
 
 	//вызов ф-ции получения конкретного продукта по urlName(uuid) из контекста SoftFurContext
 	useEffect(() => {
-		// let mounted = true    
+
 		setTimeout(() => {
-			// if (mounted) {
+
 			fetchProduct(urlName)//
-			// }
-			// return () => {
-			//   console.log('Unmounting')
-			//   setMounted(false)
-			// }		
-			console.log('useEffect 1 (fetchProduct)')	
+
+			console.log('useEffect 1 (fetchProduct)')
 		}, 1000);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
@@ -43,14 +59,9 @@ export const ProdDesc = ({ match }) => {
 	//вызов ф-ции получения всех товаров мягкой мебели из контекста SoftFurContext
 	useEffect(() => {
 		setTimeout(() => {
-			// let mounted = true
-			// if (mounted) {
+
 			fetchData()//
-			// eslint-disable-next-line react-hooks/exhaustive-deps
-			// }
-			// return () => {
-			// mounted = false
-			// }
+
 			console.log('useEffect 2 (fetchData)')
 		}, 1500);
 		// eslint-disable-next-line
@@ -60,31 +71,20 @@ export const ProdDesc = ({ match }) => {
 	useEffect(() => {
 		// let mounted = true
 		setTimeout(() => {
-			// if (mounted) {
+
 			fetchTermsModel()
 			// eslint-disable-next-line react-hooks/exhaustive-deps
-			// }
+
 			console.log('useEffect 3 (fetchTermsModel)')
 		}, 2500)
-		// return () => {
-		// mounted = false
-		// }
-		// // return fetchTermsModel()
-		// eslint-disable-next-line
-	}, [])
 
-	//получить модель текущего товара отфильтровав массив моделей termModels
-	// const currentModel = termModels.filter(model => {
-	//   return model.id === product.model.id
-	// })
+	}, [])
 
 	//отфильтровать массив content выводящий товары той-же модели что и отображаемый исключив из него текущий. Для блока товаров из той-же модели
 	const currentModelItems = content.filter(callback => {//получим новый массив со значениями: исключить текущего объекта, но оставить все остальные из той-же модели
 		return callback.id !== urlName && callback.model.name === productModelName
 	})
 
-	// console.log(productModelScheme)
-	// console.log(photo)
 
 	if (loader) {
 		return <p className="text-center">...Идёт загрузка</p>
@@ -99,20 +99,28 @@ export const ProdDesc = ({ match }) => {
 
 					{/* Фотографии */}
 
-					<div className="row">
-						{/* {thisPhoto} */}
-						{photo.length > 0 ? photo.map((item) => {
-							return (
-								<Fragment key={item.id}>
-									<div className="col-sm-4 mb-3" >
-										<img src={`${basePath}${item.uri.url}`} alt={item.filename} className="img-fluid" />
-										{/* <sub>{item.uri.url}</sub> */}
-									</div>
-								</Fragment>
-							)
-						}) : <p>Фото нет</p>
-						}
-					</div>
+
+					{/* {thisPhoto} */}
+					{photo.length > 0 ?
+						<SRLWrapper options={options}>
+							<div className="row">
+								{photo.map((item) => {
+									return (
+										<Fragment key={item.id}>
+											<div className="col-sm-4 mb-3" >
+												<a href={`${basePath}${item.uri.url}`} alt={item.filename}>
+													<img src={`${basePath}${item.uri.url}`} alt={item.filename} className="img-fluid" />
+												</a>
+											</div>
+										</Fragment>
+									)
+								})}
+							</div>
+						</SRLWrapper>
+
+						: <p>Фото нет</p>
+					}
+
 
 					{/* Цена */}
 

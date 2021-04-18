@@ -65,7 +65,7 @@ export const NewItem = ({ title, price_base, photo, soft_config, id, available }
 
                 <hr />
 
-                <Link to={`/soft-furniture/${id}`} className="btn btn-primary mt-auto">Открыть</ Link >
+                <Link to={`/soft-furniture/${id}`} target="_blank" className="btn btn-primary mt-auto">Открыть</ Link >
             </div>
         </>
     )

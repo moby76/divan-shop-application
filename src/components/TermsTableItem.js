@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import basePath from "../utils/basePath"
 
 export const TermsTableItem = ({ id, name, scheme}) => {
- console.log(scheme)
+//  console.log(scheme)
     return (
         <>
             <tr >

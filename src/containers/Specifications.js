@@ -1,10 +1,7 @@
 // Контейнер с описанием товара в виде табов/якорных ссылок и контента вызываемого ими
 // Инкапсулирован в страницу описания товара - pages/ProdDesc.js
 
-// import React from 'react'
-
-// import { Fragment } from "react";
-// import { NavLink } from "react-router-dom";
+import { useContext } from "react";
 import Config from "../components/softFurniture/config";
 import Description from "../components/softFurniture/description";
 import Dimensions from "../components/softFurniture/dimensions";
@@ -12,8 +9,20 @@ import Features from "../components/softFurniture/features";
 import Filling from "../components/softFurniture/filling";
 import Scheme from "../components/softFurniture/scheme";
 import Transformation from "../components/softFurniture/transformation";
+import { ModalContext } from "../context/modal/modalContext";
 
 function Specifications({ available, config, transformation, filling, productModelScheme, dimensions, productModelDesc, features, productModelName, productModelId }) {
+    
+    const { openModal, closeModal } = useContext(ModalContext)
+
+    //создать обработчик событий при нажатии на кнопку
+    const handlerOpenDimensions = () => {
+        openModal({
+            title: "Габариты",
+            content: <Dimensions dimensions={dimensions} />
+        })
+    }
+    
     return (
         <div className="container">
 
@@ -25,7 +34,7 @@ function Specifications({ available, config, transformation, filling, productMod
                             <a className="nav-link active" data-toggle="tab" href="#characteristics">Характеристики</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" data-toggle="tab" href="#scheme">Схема/габариты</a>
+                            <a className="nav-link" data-toggle="tab" href="#scheme">Схема</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" data-toggle="tab" href="#description">Описание модели</a>
@@ -52,7 +61,7 @@ function Specifications({ available, config, transformation, filling, productMod
                                         <a className="nav-link active" id="v-pills-config-tab" data-toggle="pill" href="#v-pills-config" role="tab" aria-controls="v-pills-config" aria-selected="false">Конфигурация</a>
                                         <a className="nav-link " id="v-pills-transform-tab" data-toggle="pill" href="#v-pills-transform" role="tab" aria-controls="v-pills-transform" aria-selected="false">Трансформация</a>
                                         <a className="nav-link " id="v-pills-filling-tab" data-toggle="pill" href="#v-pills-filling" role="tab" aria-controls="v-pills-filling" aria-selected="false">Наполнение</a>
-
+                                        <div className="btn btn-dark mt-1" role="tab" onClick={handlerOpenDimensions}>Размеры</div>
                                     </div>
                                 </div>
 
@@ -73,8 +82,8 @@ function Specifications({ available, config, transformation, filling, productMod
                 </div>
                 <div className="tab-pane fade" id="scheme">
                     <div className="row">
-                        <div className="col-sm-8"><Scheme scheme={productModelScheme} /></div>
-                        <div className="col-sm-4"><Dimensions dimensions={dimensions} /></div>
+                        <div className="col-sm-12"><Scheme scheme={productModelScheme} /></div>
+                        {/* <div className="col-sm-4"><Dimensions dimensions={dimensions} /></div> */}
                     </div>
                 </div>
                 <div className="tab-pane fade" id="description">

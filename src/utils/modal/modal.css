@@ -1,0 +1,89 @@
+@keyframes showBackDrop {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+
+/* @keyframes hideBackDrop {
+   0% {
+      opacity: 1;
+   }
+   100% {
+      opacity: 0;
+   }
+} */
+
+@keyframes showModal {
+   0% {
+      opacity: 0;
+      /* transform: translateY(-500px); */
+      transform: scale(0);
+   }
+
+   50%{
+      opacity: .5;
+      transform: scale(.7);
+   }
+
+   80% {
+      opacity: .8;
+      transform: scale(1.2);
+   }
+
+   100% {
+      opacity: 1;
+      transform: scale(1);
+   }
+
+}
+
+.backDrop {
+   position: fixed;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: rgba(0, 0, 0, 90%);
+   z-index: 100;
+   transition: all .3s;
+   animation: showBackDrop .3s ease-out;
+}
+
+.backDrop-hide {
+   opacity: 0;
+}
+
+.myModal{
+   background: #fff;
+   width: 85vw;
+   height: 70vh;
+   box-shadow: 0 0 25px rgba(0, 0, 0, 95%);
+   border-radius: 5px;
+   transition: all .3s;
+   animation: showModal .3s ease-in-out;
+   overflow-y: scroll;
+
+}
+
+.backDrop-hide .myModal{
+   opacity: 0;
+   transform: translateY(-500px);
+}
+
+.modalHeader {
+   margin: 0;
+   padding: 10px;
+   border-bottom: solid 1px rgb(165, 165, 165);
+}
+
+.modalBody {
+   padding: 10px;
+   overflow-x: hidden;
+   z-index: 100;
+}

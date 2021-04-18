@@ -10,21 +10,24 @@ import { AlertState } from './context/alert/alertState';
 import { PaginationState } from './context/pagination/paginationState';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import SimpleReactLightbox from 'simple-react-lightbox'
+import { ModalState } from './context/modal/modalState';
 
 
 ReactDOM.render(
   // <React.StrictMode>
-  <PaginationState>
-    <AlertState>
-      <TermsState>
-        <SoftFurState>
-          <SimpleReactLightbox>
-            <App />
-          </SimpleReactLightbox>
-        </SoftFurState>
-      </TermsState>
-    </AlertState>
-  </PaginationState>,
+  <ModalState>
+    <PaginationState>
+      <AlertState>
+        <TermsState>
+          <SoftFurState>
+            <SimpleReactLightbox>
+              <App />
+            </SimpleReactLightbox>
+          </SoftFurState>
+        </TermsState>
+      </AlertState>
+    </PaginationState>,
+  </ModalState>,
   // </React.StrictMode>,
   document.getElementById('root')
 );

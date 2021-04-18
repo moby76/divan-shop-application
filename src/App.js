@@ -6,12 +6,14 @@ import { Models } from './pages/Models';
 import { ProdDesc } from './pages/ProdDesc';
 // import { ProdDesc } from "./pages/ProdDesc";
 import SoftFur from "./pages/SoftFur";
+// import { Modal } from './utils/modal/modal';
 // import { Alert } from './components/Alert';
 
 function App() {
   return (
         <BrowserRouter >
           < Navbar />
+          {/* <Modal title={"Test"} /> */}
           <div className="container pt-4">
             {/* <Alert alert={{ text: 'Test Alert' }} /> */}
             <Switch >
