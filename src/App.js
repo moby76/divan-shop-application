@@ -1,3 +1,4 @@
+// import { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Navbar } from "./components/Navbar";
 import { Home } from "./pages/Home";
@@ -10,9 +11,12 @@ import SoftFur from "./pages/SoftFur";
 // import { Alert } from './components/Alert';
 
 function App() {
+
+  // const [mainPage, setMainPage] = useState(true)
   return (
         <BrowserRouter >
-          < Navbar />
+
+          {< Navbar />}
           {/* <Modal title={"Test"} /> */}
           <div className="container pt-4">
             {/* <Alert alert={{ text: 'Test Alert' }} /> */}

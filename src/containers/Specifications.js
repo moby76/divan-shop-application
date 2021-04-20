@@ -13,7 +13,7 @@ import { ModalContext } from "../context/modal/modalContext";
 
 function Specifications({ available, config, transformation, filling, productModelScheme, dimensions, productModelDesc, features, productModelName, productModelId }) {
     
-    const { openModal, closeModal } = useContext(ModalContext)
+    const { openModal} = useContext(ModalContext)
 
     //создать обработчик событий при нажатии на кнопку
     const handlerOpenDimensions = () => {
@@ -48,7 +48,7 @@ function Specifications({ available, config, transformation, filling, productMod
 
             {/* контент для табов (ссылок) --^ */}
 
-            <div className="tab-content pt-3" style={{height: 300, overflowX: "hidden", overflowY: "auto"}}>
+            <div className="tab-content pt-3" style={{height: 300, overflowX: "hidden"}}>
                 {/* блок характеристик товара */}
                 <div className="tab-pane fade show active" id="characteristics">
                     <div className="row">

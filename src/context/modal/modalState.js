@@ -1,5 +1,5 @@
 
-import { useReducer, useState } from "react"
+import { useState } from "react"
 import { Modal } from "../../utils/modal/modal"
 import { ModalContext } from "./modalContext"
 // import { ModalReducer } from "./modalReducer"
@@ -19,7 +19,7 @@ export const ModalState = ({ children }) => {
    // создать методы меняющие состояние окна
    const openModal = ({ title, content }) => {//modalConfig - параметр в который будет переданы 2 значения: 1 - тайтл, 2 - контент
       // const { title, content } = modalConfig//деструктуируем modalConfig
-      setModalContent({ title, content })
+      setModalContent({ title, content})
       setModalOpened(true)
    }
 

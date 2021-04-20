@@ -1,3 +1,5 @@
+//компонент новинки - инкапсулирован в контейнер NewItemsList
+
 import { Link } from "react-router-dom";
 import { SRLWrapper } from "simple-react-lightbox";
 import basePath from '../utils/basePath'

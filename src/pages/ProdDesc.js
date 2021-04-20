@@ -72,12 +72,11 @@ export const ProdDesc = ({ match }) => {
 		// let mounted = true
 		setTimeout(() => {
 
-			fetchTermsModel()
-			// eslint-disable-next-line react-hooks/exhaustive-deps
+			fetchTermsModel()			
 
 			console.log('useEffect 3 (fetchTermsModel)')
 		}, 2500)
-
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	//отфильтровать массив content выводящий товары той-же модели что и отображаемый исключив из него текущий. Для блока товаров из той-же модели

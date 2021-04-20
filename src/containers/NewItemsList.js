@@ -1,4 +1,6 @@
-import { Fragment, useContext, useEffect } from "react"
+//контейнер с новинками. Загружается на главной странице
+
+import { useContext, useEffect } from "react"
 // import { SRLWrapper } from "simple-react-lightbox"
 import { NewItem } from "../components/NewItem"
 import { SoftFurContext } from "../context/SoftFur/SoftFurContext"

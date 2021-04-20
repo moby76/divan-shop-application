@@ -7,6 +7,7 @@ export const Modal = ({ title, content }) => {
    const { closeModal } = useContext(ModalContext)
 
    const [closing, setClosing] = useState(false)
+   // const [type, setType] = useState('')
 
    const handlerClose = () => {
       setClosing(true)
@@ -22,6 +23,7 @@ export const Modal = ({ title, content }) => {
    return (
       <div className={closeClass} onClick={handlerClose}>
          <div className="myModal" onClick={(event) => event.stopPropagation()}>
+            <div className="modalCloseButton" onClick={handlerClose}>×</div>
             <div className="modalHeader">
                <h5>{title}</h5>
             </div>

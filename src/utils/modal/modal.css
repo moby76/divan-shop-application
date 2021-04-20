@@ -66,6 +66,7 @@
    transition: all .3s;
    animation: showModal .3s ease-in-out;
    overflow-y: auto;
+   position: relative;
 }
 
 .backDrop-hide .myModal {
@@ -83,4 +84,12 @@
    padding: 10px;
    overflow-x: hidden;
    z-index: 100;
+}
+
+.modalCloseButton{
+   position: absolute;
+   /* top: 10px; */
+   right: 10px;
+   font-size: xx-large;
+   cursor: pointer;
 }
