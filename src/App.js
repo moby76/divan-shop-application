@@ -18,7 +18,7 @@ function App() {
 
           {< Navbar />}
           {/* <Modal title={"Test"} /> */}
-          <div className="container pt-4">
+          <div className="container-fluid pt-4">
             {/* <Alert alert={{ text: 'Test Alert' }} /> */}
             <Switch >
               <Route path="/" exact component={Home} />

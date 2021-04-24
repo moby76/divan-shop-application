@@ -40,7 +40,7 @@ export const SoftFur = () => {
   const indexOfFirstItems = indexofLastItems - itemsPerPage
   // Создание нового массива на основе полученного, в который будет попадать только значения из интервала
   const currentItems = content.slice(indexOfFirstItems, indexofLastItems)
-  // console.log(content[0])
+  // console.log(content)
 
   return (
     <div>

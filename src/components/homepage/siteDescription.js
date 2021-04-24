@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 // import { Navbar } from '../Navbar'
 import { NavLink } from "react-router-dom";
 
+
 function SiteDescription() {
    return (
 
@@ -17,14 +18,12 @@ function SiteDescription() {
             мягкой мебели среднего сегмента стоимости. Реализуем продукцию как через собственные точки, так и через мелкооптовые
             поставки
             <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;Вы можете посмотреть образцы мебели как <NavLink to="/soft-furniture">в наличии</ NavLink> так и заказать по индивидуальным размерам на базе уже имеющихся моделей
+            &nbsp;&nbsp;&nbsp;&nbsp;Вы можете посмотреть образцы мебели как  <a href='#shops'>в наличии</a> так и заказать по индивидуальным размерам на базе уже имеющихся моделей
             </p>
             
             {/* <a className="btn btn-primary btn-lg" href="/" role="button">Узнать больше</a> */}
          {/* <Navbar /> */}
-         </div>
-
-         
+         </div>         
       </Fragment>
 
    )
