@@ -34,26 +34,7 @@ export const SoftFurReducer = (state, action) => {
                 newitems: action.payload,
                 loader: false
             }
-        // case GET_ITEMS_BY_MODEL:
-        //     return {
-        //         ...state,
-        //         ItemsByModelsOfProduct: action.payload,
-        //         loader: false
-        //     }
-        // case SET_LOADING:
-        //     return { ...state, loader: true }
-        // case SET_PAGINATE:
-        //     return {
-        //         ...state,
-        //         // loader: true 
-        //         currentPage: action.value
-        //     }
-        // case SET_PAGINATE_BLOCK:
-        //     return {
-        //         ...state,
-        //         loader: false, 
-        //         currentBlock: action.value
-        //     }
+       
         default: return state
     }
 }

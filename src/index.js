@@ -11,10 +11,12 @@ import { PaginationState } from './context/pagination/paginationState';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import SimpleReactLightbox from 'simple-react-lightbox'
 import { ModalState } from './context/modal/modalState';
+import ShopsState from './context/shops/shopsState';
 
 
 ReactDOM.render(
   // <React.StrictMode>
+  <ShopsState>
   <ModalState>
     <PaginationState>
       <AlertState>
@@ -26,8 +28,9 @@ ReactDOM.render(
           </SoftFurState>
         </TermsState>
       </AlertState>
-    </PaginationState>,
-  </ModalState>,
+    </PaginationState>
+  </ModalState>
+  </ShopsState>,
   // </React.StrictMode>,
   document.getElementById('root')
 );

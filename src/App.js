@@ -5,6 +5,7 @@ import { Home } from "./pages/Home";
 import { ModelDesc } from './pages/ModelDesc';
 import { Models } from './pages/Models';
 import { ProdDesc } from './pages/ProdDesc';
+import Shop from './pages/Shop';
 // import { ProdDesc } from "./pages/ProdDesc";
 import SoftFur from "./pages/SoftFur";
 // import { Modal } from './utils/modal/modal';
@@ -27,6 +28,7 @@ function App() {
               <Route path="/soft-furniture/:id" component={ProdDesc} />
               <Route path="/models/:id" component={ModelDesc} />
               <Route path="/models/" component={Models} />
+              <Route path="/shop/:title" component={Shop} />
             </Switch>
           </div>
         </BrowserRouter>

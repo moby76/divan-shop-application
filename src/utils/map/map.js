@@ -10,6 +10,7 @@ import {
    Marker,
    InfoWindow
 } from 'react-google-maps'
+import './map.css'
 // import { Fragment } from 'react'
 
 function Map({ item }) {
@@ -27,16 +28,20 @@ function Map({ item }) {
       >
          <Marker position={{ lat: location.lat, lng: location.lng }} onClick={() => setSelectedShop(item)}/>
          {selectedShop && (
-            <InfoWindow
+            <InfoWindow 
             position={{ lat: selectedShop.location.lat, lng: selectedShop.location.lng }}
             onCloseClick={() => {
                setSelectedShop(null);
             }}
             >
-               <>
-               <div>{item.title}</div>
-               <p>{item.phone}</p>
-               </>
+               
+               <div >
+               <h5 style={{color: '#2b0c43'}}>{item.title}</h5>
+               <hr/>
+               <h6>{item.phone}</h6>
+               <p><h6><i>отдел : </i>{item.division.name}</h6></p>
+               </div>
+               
             </InfoWindow>
          )}
       </ GoogleMap >

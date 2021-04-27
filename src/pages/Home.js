@@ -1,6 +1,6 @@
 import { Fragment } from "react"
 // import SiteDescription from "../components/homepage/siteDescription"
-import Shops from "../components/shops"
+import ShopsBlock from "../components/shopsBlock"
 import { NewItemsList } from "../containers/NewItemsList"
 import SiteDescription from "../components/homepage/siteDescription"
 
@@ -11,7 +11,7 @@ export const Home = () => {
         <Fragment>
             <SiteDescription />
             <NewItemsList />
-            <Shops />
+            <ShopsBlock />
         </Fragment>
     )
 }

@@ -1,0 +1,9 @@
+.infowindow{
+   background-color: brown;
+}
+
+.gm-style .gm-style-iw-c{
+   /* background-color: brown; */
+   width: 13vw;
+   /* transition: all 3000ms ease-in; */
+}

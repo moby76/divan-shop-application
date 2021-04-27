@@ -1,25 +1,18 @@
-// import React from 'react'
-// import axios from 'axios';
-import { useEffect, useState } from 'react'
-import API from '../utils/api'
-// import { GoogleMap, withScriptjs, withGoogleMap } from 'react-google-maps'
+import { useContext, useEffect } from 'react'
 import { Fragment } from 'react'
 import Map from '../utils/map/map'
 import { Link } from 'react-router-dom'
+import { ShopsContext } from '../context/shops/shopsContext'
 
-function Shops() {
+function ShopsBlock() {
 
-   const [shops, setShops] = useState([])
+   
+   const { fetchShops, shops } = useContext(ShopsContext)
 
    useEffect(() => {
-      async function fetchData() {
-         //    // setLoader()
-         const contentVal = await API.get(
-            `node/shops`
-         )
-         setShops(contentVal.data.data)
-      }
-      return fetchData()
+
+      fetchShops()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
 
@@ -51,7 +44,7 @@ function Shops() {
                               </section>
                               <section className="col-md-12">
                                  <div className="card-body">
-                                    <h5>Посетить магазин <Link to={`/shops/${item.title}`}>{item.title}</ Link></h5>
+                                    <h5>Посетить <i>отдел : </i>{item.division.name} в {item.title && <Link to={`/shop/${item.title}`} target="_blank">{item.title}</ Link>}</h5>
                                  </div>
                               </section>
                            </div>
@@ -66,6 +59,4 @@ function Shops() {
    )
 }
 
-// const WrappedMap = withScriptjs(withGoogleMap(Shops))
-
-export default Shops
+export default ShopsBlock

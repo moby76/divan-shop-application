@@ -16,7 +16,6 @@ export const GET_ITEMS_BY_MODEL = 'GET_ITEMS_BY_MODEL'
 export const GET_MODELS = 'GET_MODELS'
 export const GET_SINGLE_MODEL = 'GET_SINGLE_MODEL'
 
-
 export const SET_LOADING = 'SET_LOADING'
 export const SET_PAGINATE_PAGE = 'SET_PAGINATE_PAGE'
 export const SET_PAGINATE_BLOCK = 'SET_PAGINATE_BLOCK'
@@ -30,3 +29,6 @@ export const SHOW_MODAL = 'SHOW_MODAL'
 export const HIDE_MODAL = 'HIDE_MODAL'
 
 export const FETCH_ERROR = 'FETCH_ERROR'
+
+export const FETCH_SHOPS = 'FETCH_SHOPS'
+export const FETCH_SINGLE_SHOP = 'FETCH_SINGLE_SHOP'
