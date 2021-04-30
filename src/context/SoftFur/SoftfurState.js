@@ -28,11 +28,11 @@ export const SoftFurState = ({ children }) => {
 
     const [state, dispatch] = useReducer(SoftFurReducer, initialState)
 
-    //Запрос на получение данных для формирования страницы с карточками товаров 
+    //Запрос на получение данных всех товаров типа "мягкая мебель" 
     const fetchData = async () => {
         setLoader()
         const contentVal = await API.get(
-            `node/soft_fur?include=photo,soft_config,model&sort=created`
+            `node/soft_fur?include=photo,soft_config,model,where&sort=created`
         )
         dispatch({
             type: GET_PRODUCTS,//данный тип оказывает влияние на массив content(заполняет его данными из jsonapi) и так-же деактивирует loader(false)
@@ -40,7 +40,7 @@ export const SoftFurState = ({ children }) => {
         })
     }
 
-    //Запрос на получение данных для формирования описания товара
+    //Запрос на получение данных для формирования описания одного товара
     const fetchProduct = async (url) => {
         setLoader()
         const prodVal = await API.get(

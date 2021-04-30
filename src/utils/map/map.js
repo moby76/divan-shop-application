@@ -39,7 +39,7 @@ function Map({ item }) {
                <h5 style={{color: '#2b0c43'}}>{item.title}</h5>
                <hr/>
                <h6>{item.phone}</h6>
-               <p><h6><i>отдел : </i>{item.division.name}</h6></p>
+               <p><h6><i>отдел : </i>{item.division.name}</h6>({item.floor.value})</p>
                </div>
                
             </InfoWindow>

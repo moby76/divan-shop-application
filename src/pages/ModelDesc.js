@@ -72,13 +72,13 @@ export const ModelDesc = ({ match }) => {
                 {/* <ModelDesc
                 /> */}
                 <h3 className="col-sm-12 text-center">Модель {name}</h3>
-                <div className="row">
+                <div className="row mb-3">
                     {thisDescription}
                     <hr />
                 </div>                
                     {scheme.length > 0 ?                    
                         <SRLWrapper options={options}>
-                            <div className="row">
+                            <div className="row mb-3">
                             {scheme.map((item) => {
                                 return (
                                     <div className="col-sm-4 mb-3" key={item.id}>

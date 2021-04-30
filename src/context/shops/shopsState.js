@@ -15,10 +15,11 @@ function ShopsState({ children }) {
 
    const [state, dispatch] = useReducer(ShopsReducer, initialState)
 
+   //функция запроса всех магазинов с включением ткрминов словаря "отдел"(division)
    const fetchShops = async () => {
       //    // setLoader()
       const contentVal = await API.get(
-         `node/shops?include=division`
+         `node/shops?include=division,work_time`
       )
       dispatch({
          type: FETCH_SHOPS,
@@ -29,7 +30,7 @@ function ShopsState({ children }) {
    const fetchSingleShop = async (urlName) => {
       //    // setLoader()
       const response = await API.get(
-         `node/shops?filter[title]=${urlName}`
+         `node/shops?include=division,work_time&filter[title]=${urlName}`
       )
       dispatch({
          type: FETCH_SINGLE_SHOP,

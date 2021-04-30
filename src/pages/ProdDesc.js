@@ -51,7 +51,7 @@ export const ProdDesc = ({ match }) => {
 
 			fetchProduct(urlName)//
 
-			console.log('useEffect 1 (fetchProduct)')
+			// console.log('useEffect 1 (fetchProduct)')
 		}, 1000);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
@@ -62,7 +62,7 @@ export const ProdDesc = ({ match }) => {
 
 			fetchData()//
 
-			console.log('useEffect 2 (fetchData)')
+			// console.log('useEffect 2 (fetchData)')
 		}, 1500);
 		// eslint-disable-next-line
 	}, [])
@@ -74,7 +74,7 @@ export const ProdDesc = ({ match }) => {
 
 			fetchTermsModel()			
 
-			console.log('useEffect 3 (fetchTermsModel)')
+			// console.log('useEffect 3 (fetchTermsModel)')
 		}, 2500)
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
@@ -84,6 +84,7 @@ export const ProdDesc = ({ match }) => {
 		return callback.id !== urlName && callback.model.name === productModelName
 	})
 
+	console.log(content)
 
 	if (loader) {
 		return <p className="text-center">...Идёт загрузка</p>
