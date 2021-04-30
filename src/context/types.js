@@ -15,6 +15,7 @@ export const GET_ITEMS_BY_MODEL = 'GET_ITEMS_BY_MODEL'
 
 export const GET_MODELS = 'GET_MODELS'
 export const GET_SINGLE_MODEL = 'GET_SINGLE_MODEL'
+export const GET_NEW_MODELS = 'GET_NEW_MODELS'
 
 export const SET_LOADING = 'SET_LOADING'
 export const SET_PAGINATE_PAGE = 'SET_PAGINATE_PAGE'

@@ -1,6 +1,6 @@
 import { useReducer } from "react"
 import API from "../../utils/api"
-import { FETCH_ERROR, GET_MODELS, GET_SINGLE_MODEL, SET_LOADING } from "../types"
+import { FETCH_ERROR, GET_MODELS, GET_NEW_MODELS, GET_SINGLE_MODEL, SET_LOADING } from "../types"
 import { TermsContext } from "./termsContext"
 import { TermsReducer } from "./termsReducer"
 
@@ -9,6 +9,7 @@ export const TermsState = ({ children }) => {
     const initialState = {
         termModels: [],//Массив с терминами таксономии "Модели мягкой мебели"      
         termSingleModel: '',//одна модель(объект из API, получаемый при запросе из )
+        newModels: [],//Массив новых моделей
         description: '',// Описание модели (description.value)
         scheme: [],//схема(массив ссылок до изображений)
         singleModel: {},//одна модель
@@ -18,6 +19,7 @@ export const TermsState = ({ children }) => {
 
     const [state, dispatch] = useReducer(TermsReducer, initialState)
 
+    //Получаем все модели мягкой мебели
     const fetchTermsModel = async () => {
         setLoader()
         await API.get(//подгружаем все модели 
@@ -34,10 +36,10 @@ export const TermsState = ({ children }) => {
                     type: FETCH_ERROR
                 })
             })
-
     }
 
-    const fetchSingleModel = async (url) => {//подгружаем единственную модель по url = uuid
+    //подгружаем единственную модель по url = uuid
+    const fetchSingleModel = async (url) => {
         setLoader()
         await API.get(
             `taxonomy_term/models/${url}?include=scheme`
@@ -51,9 +53,32 @@ export const TermsState = ({ children }) => {
             .catch(error => {
                 dispatch({
                     type: FETCH_ERROR
+                    
                 })
+                console.log("Ошибка подключения ",error)
             })
     }
+
+    //Получение новинок(новых моделей)
+    const fetchNeweModels = async () => {
+        // setLoader()
+        await API.get(
+            `taxonomy_term/models?include=scheme&filter[new_model]=1&page[limit]=3&sort=revision_created`
+        )
+            .then(value => {
+                dispatch({
+                    type: GET_NEW_MODELS,
+                    payload: value.data.data
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: FETCH_ERROR                    
+                })
+                console.log("Ошибка подключения ",error)
+            })
+    }
+
 
     //метод изменения состояния лоадера
     const setLoader = () => {
@@ -62,11 +87,11 @@ export const TermsState = ({ children }) => {
         })
     }
 
-    const { termModels, termSingleModel, loader, singleModel, description, scheme } = state
+    const { termModels, termSingleModel, loader, singleModel, description, scheme, newModels } = state
 
     return <TermsContext.Provider value={{
-        fetchTermsModel, fetchSingleModel, setLoader,
-        termModels, termSingleModel, loader, singleModel, description, scheme
+        fetchTermsModel, fetchSingleModel, setLoader, fetchNeweModels,
+        termModels, termSingleModel, loader, singleModel, description, scheme, newModels
     }}>
         {children}
     </TermsContext.Provider>

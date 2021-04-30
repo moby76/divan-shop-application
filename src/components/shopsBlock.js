@@ -21,9 +21,9 @@ function ShopsBlock() {
    return (
       <Fragment >
          
-         <h3 id={'shops'} className="col-sm-12 text-center" >Посмотреть товары в наличии</h3>
+         {/* <h3  className="col-sm-12 text-center" >Посмотреть товары в наличии</h3> */}
          
-         <div className="row pr-3 pl-3">
+         <div id={'shops'} className="row pr-3 pl-3">
 
             {
                shops.map(item => {

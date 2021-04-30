@@ -1,5 +1,5 @@
 // import basePath from "../../utils/basePath";
-import { GET_MODELS, GET_SINGLE_MODEL, SET_LOADING, FETCH_ERROR } from "../types";
+import { GET_MODELS, GET_SINGLE_MODEL, SET_LOADING, FETCH_ERROR, GET_NEW_MODELS } from "../types";
 
 export const TermsReducer = (state, action) => {
 
@@ -16,11 +16,16 @@ export const TermsReducer = (state, action) => {
             return {
                 ...state,
                 termSingleModel: action.payload,
-                    description: action.payload.model_desc.value,
-                    name: action.payload.name,
-                    scheme: action.payload.scheme,                
-                    loader: false,
+                description: action.payload.model_desc.value,
+                name: action.payload.name,
+                scheme: action.payload.scheme,
+                loader: false,
                 error: ''
+            }
+        case GET_NEW_MODELS:
+            return {
+                ...state,
+                newModels: action.payload
             }
         case FETCH_ERROR:
             return {
@@ -28,6 +33,7 @@ export const TermsReducer = (state, action) => {
                 termSingleModel: {},
                 error: 'Что-то пошло не так...'
             }
+
         case SET_LOADING:
             return { ...state, loader: true }
         default: return state
