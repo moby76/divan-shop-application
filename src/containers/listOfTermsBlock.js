@@ -12,7 +12,7 @@ export const ListOfTermsBlock = ({ termModels, productModelName }) => {
   //получаем новый массив excludeCurrentModel --^
 
     return (
-        <div>
+        <div className="container">
             <div className="col-sm-12 text-center"> <h5>Посмотреть другие модели</h5></div>
             <hr />
             <table className="table table-responsive-sm table-striped table-dark">
