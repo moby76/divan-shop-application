@@ -1,5 +1,6 @@
-// import axios from "axios";
-// import API from '../utils/api'
+//Страница отображения всех товаров типа "мягкая мебель"
+
+
 import React, { useContext, useEffect } from "react";
 import { Card } from '../components/Card';
 import { PaginationPage } from "../utils/navigation/paginationPage";
@@ -43,8 +44,9 @@ export const SoftFur = () => {
   // console.log(content)
 
   return (
-    <div>
-      <h1>Вся Мягкая мебель</h1>
+    <div className="container">
+      <div className="col-sm-12 text-center"><h3>Вся Мягкая мебель</h3></div>
+      <hr />
       <div className="row">
         {loader ?
           <p className="text-center">...Идёт загрузка</p> :

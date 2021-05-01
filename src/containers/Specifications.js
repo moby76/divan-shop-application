@@ -27,9 +27,12 @@ function Specifications({ available, config, transformation, filling, productMod
         <div className="container">
 
             {/* Табы основные */}
-            <div className="card-header bg-transparent">
-                <div className="container-fluid">
+            <div className="bg-transparent">
+                
+                <div className="row-fluid">
+                    
                     <ul className="nav nav-pills nav-justified">
+                    
                         <li className="nav-item">
                             <a className="nav-link active" data-toggle="tab" href="#characteristics">Характеристики</a>
                         </li>
@@ -46,9 +49,11 @@ function Specifications({ available, config, transformation, filling, productMod
                 </div>
             </div>
 
+            <hr/>
+
             {/* контент для табов (ссылок) --^ */}
 
-            <div className="tab-content pt-3" style={{height: 300, overflowX: "hidden"}}>
+            <div className="tab-content" style={{height: 300, overflowX: "hidden"}}>
                 {/* блок характеристик товара */}
                 <div className="tab-pane fade show active" id="characteristics">
                     <div className="row">

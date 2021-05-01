@@ -16,31 +16,31 @@ export const ModelDesc = ({ match }) => {
     const { fetchSingleModel, termSingleModel, scheme, description, loader } = useContext(TermsContext)
     const { fetchData } = useContext(SoftFurContext)
 
-        //Опции для Лайтбокса
-        const options = {
-            settings: {
-                overlayColor: "rgb(15 15 15 / 95%)",
-                disableKeyboardControls: false,
-                disableWheelControls: true,
-                autoplaySpeed: 1500,
-                transitionSpeed: 300,
-            },
-            buttons: {
-                // backgroundColor: "#1b5245",
-                // iconColor: "rgba(126, 172, 139, 0.8)",
-                showDownloadButton: false,
-                showNextButton: true,
-                showPrevButton: true,
-                showThumbnailsButton: false,
-                showAutoplayButton: true,
-            },
-            caption: {
-                showCaption: false,
-            }, 
-            thumbnails: {
-                showThumbnails: true
-            }
+    //Опции для Лайтбокса
+    const options = {
+        settings: {
+            overlayColor: "rgb(15 15 15 / 95%)",
+            disableKeyboardControls: false,
+            disableWheelControls: true,
+            autoplaySpeed: 1500,
+            transitionSpeed: 300,
+        },
+        buttons: {
+            // backgroundColor: "#1b5245",
+            // iconColor: "rgba(126, 172, 139, 0.8)",
+            showDownloadButton: false,
+            showNextButton: true,
+            showPrevButton: true,
+            showThumbnailsButton: false,
+            showAutoplayButton: true,
+        },
+        caption: {
+            showCaption: false,
+        },
+        thumbnails: {
+            showThumbnails: true
         }
+    }
 
     useEffect(() => {
         setTimeout(() => {
@@ -71,14 +71,16 @@ export const ModelDesc = ({ match }) => {
             <Fragment>
                 {/* <ModelDesc
                 /> */}
-                <h3 className="col-sm-12 text-center">Модель {name}</h3>
-                <div className="row mb-3">
+                <div className="container">
+                    <div className="col-sm-12 text-center"><h3>Модель {name}</h3></div>
+                    <hr />
+
                     {thisDescription}
                     <hr />
-                </div>                
-                    {scheme.length > 0 ?                    
-                        <SRLWrapper options={options}>
-                            <div className="row mb-3">
+                </div>
+                {scheme.length > 0 ?
+                    <SRLWrapper options={options}>
+                        <div className="row mb-3">
                             {scheme.map((item) => {
                                 return (
                                     <div className="col-sm-4 mb-3" key={item.id}>
@@ -88,11 +90,11 @@ export const ModelDesc = ({ match }) => {
                                     </div>
                                 )
                             })}
-                            </div>
-                        </SRLWrapper>                        
-                        : <p>Схемы нет</p>
-                    }
-                
+                        </div>
+                    </SRLWrapper>
+                    : <p>Схемы нет</p>
+                }
+
                 <ItemsByModels // компонент в котором Подгружаем список товаров по модели текущего товара
                     urlName={urlModelName}//передача uuid товара в блок отображения других товаров из той-же модели
                     // currentModelItems={currentModelItems}

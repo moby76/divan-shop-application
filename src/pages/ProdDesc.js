@@ -18,31 +18,31 @@ export const ProdDesc = ({ match }) => {
 	const { fetchTermsModel, termModels } = useContext(TermsContext)
 	// const { title, price, config, img_url, img_alt, productModelName } = product//свойства из продукта
 
-	        //Опции для Лайтбокса
-			  const options = {
-            settings: {
-                overlayColor: "rgb(15 15 15 / 95%)",
-                disableKeyboardControls: false,
-                disableWheelControls: true,
-                autoplaySpeed: 1500,
-                transitionSpeed: 100,
-            },
-            buttons: {
-                // backgroundColor: "#1b5245",
-                // iconColor: "rgba(126, 172, 139, 0.8)",
-                showDownloadButton: false,
-                showNextButton: true,
-                showPrevButton: true,
-                showThumbnailsButton: false,
-                showAutoplayButton: true,
-            },
-            caption: {
-                showCaption: false,
-            }, 
-            thumbnails: {
-                showThumbnails: true
-            }
-        }
+	//Опции для Лайтбокса
+	const options = {
+		settings: {
+			overlayColor: "rgb(15 15 15 / 95%)",
+			disableKeyboardControls: false,
+			disableWheelControls: true,
+			autoplaySpeed: 1500,
+			transitionSpeed: 100,
+		},
+		buttons: {
+			// backgroundColor: "#1b5245",
+			// iconColor: "rgba(126, 172, 139, 0.8)",
+			showDownloadButton: false,
+			showNextButton: true,
+			showPrevButton: true,
+			showThumbnailsButton: false,
+			showAutoplayButton: true,
+		},
+		caption: {
+			showCaption: false,
+		},
+		thumbnails: {
+			showThumbnails: true
+		}
+	}
 
 	//вызов ф-ции получения конкретного продукта по urlName(uuid) из контекста SoftFurContext
 	useEffect(() => {
@@ -72,7 +72,7 @@ export const ProdDesc = ({ match }) => {
 		// let mounted = true
 		setTimeout(() => {
 
-			fetchTermsModel()			
+			fetchTermsModel()
 
 			// console.log('useEffect 3 (fetchTermsModel)')
 		}, 2500)
@@ -95,40 +95,47 @@ export const ProdDesc = ({ match }) => {
 
 					{/* Название */}
 
-					<h5 className="col-sm-12 text-center" >{product.title}</h5>
+					<div className="col-sm-12 text-center"><h3>{product.title}</h3></div>
+					<hr />
 
-					{/* Фотографии */}
+					<div className="row">
 
+						{/* Фотографии */}
 
-					{/* {thisPhoto} */}
-					{photo.length > 0 ?
-						<SRLWrapper options={options}>
-							<div className="row">
-								{photo.map((item) => {
-									return (
-										<Fragment key={item.id}>
-											<div className="col-sm-4 mb-3" >
-												<a href={`${basePath}${item.uri.url}`} alt={item.filename}>
-													<img src={`${basePath}${item.uri.url}`} alt={item.filename} className="img-fluid" />
-												</a>
-											</div>
-										</Fragment>
-									)
-								})}
-							</div>
-						</SRLWrapper>
+						<div className="col-sm-9">
+							{photo.length > 0 ?
+								<SRLWrapper options={options}>
+									<div className="row p-3">
+										{photo.map((item) => {
+											return (
+												<Fragment key={item.id}>
+													<div className="col-sm-4 mb-3" >
+														<a href={`${basePath}${item.uri.url}`} alt={item.filename}>
+															<img src={`${basePath}${item.uri.url}`} alt={item.filename} className="img-fluid" />
+														</a>
+													</div>
+												</Fragment>
+											)
+										})}
+									</div>
+								</SRLWrapper>
 
-						: <p>Фото нет</p>
-					}
+								: <p>Фото нет</p>
+							}
 
+						</div>
 
-					{/* Цена */}
+						{/* Цена */}
+						<div className="col-sm-3 p-3">
+							<h5>{product.price_base}</h5>
 
-					<h5>{product.price_base}</h5>
+							{/* Наличие */}
 
-					{/* Наличие */}
+							<p>Наличие: {product.available ? <span>В наличии</span> : <span>Отсутствует</span>}</p>
 
-					<p>Наличие: {product.available ? <span>В наличии</span> : <span>Отсутствует</span>}</p>
+						</div>
+
+					</div>
 
 					<Specifications
 						config={config}

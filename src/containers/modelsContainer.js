@@ -27,7 +27,7 @@ export const ModelsContainer = () => {
     // console.log("Массив моделей :", termModels)
 
     return (
-        <div className="container-fluid">
+        <div className="container">
             <div className="col-sm-12 text-center"> <h3>Модели</h3> </div>
             <hr />
             {loader ?

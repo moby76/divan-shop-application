@@ -70,7 +70,7 @@ export const ModeIsItem = ({ name, model_desc, scheme, id }) => {
                 <hr />
 
                 {/* <Link to={`/soft-furniture/${id}`} className="btn btn-primary mt-auto">Открыть</ Link > */}
-                <Link to={`/models/${id}`} target="_blank" className="btn btn-primary mt-auto" >Перейти</Link>
+                <Link to={`/models/${id}`} target="_blank" className="btn btn-primary mt-auto" >Перейти к описанию</Link>
             </div>
         </>
     )
