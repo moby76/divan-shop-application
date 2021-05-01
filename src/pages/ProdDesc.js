@@ -109,7 +109,7 @@ export const ProdDesc = ({ match }) => {
 										{photo.map((item) => {
 											return (
 												<Fragment key={item.id}>
-													<div className="col-sm-4 mb-3" >
+													<div className="col-sm-6 mb-3" >
 														<a href={`${basePath}${item.uri.url}`} alt={item.filename}>
 															<img src={`${basePath}${item.uri.url}`} alt={item.filename} className="img-fluid" />
 														</a>
