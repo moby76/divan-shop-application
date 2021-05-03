@@ -20,11 +20,10 @@ function ShopsProducts({ shop, content, }) {
       <div className="container">
          <div className="col-sm-12 text-center"> <h5>Все товары магазина {shop.title}</h5> </div>
          <hr />
-         {
-            currentShopContent.length > 0 ?
-
+         {currentShopContent.length > 0 ?
                <div className="row">
                   {
+
                      // (loader) ?//если loader = true, то:  
                      //     <p className="text-center">...Идёт загрузка</p> : //иначе:            
                      <>
@@ -40,8 +39,7 @@ function ShopsProducts({ shop, content, }) {
                         })}
                      </>
                   }
-               </div>
-               :
+               </div>:               
                null
             // currentShopContent.map((item, i) => {
             //    return (

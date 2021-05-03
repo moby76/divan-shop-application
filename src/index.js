@@ -8,7 +8,12 @@ import { TermsState } from './context/Terms/termsState';
 import { AlertState } from './context/alert/alertState';
 // import { PaginationContext } from './context/pagination/paginationContext';
 import { PaginationState } from './context/pagination/paginationState';
+
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+
 import SimpleReactLightbox from 'simple-react-lightbox'
 import { ModalState } from './context/modal/modalState';
 import ShopsState from './context/shops/shopsState';

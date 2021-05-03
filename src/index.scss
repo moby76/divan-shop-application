@@ -1,18 +1,18 @@
 @import "~bootstrap/scss/bootstrap";
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+// body {
+//   margin: 0;
+//   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+//     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+//     sans-serif;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+// code {
+//   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+//     monospace;
+// }
 
 //
 // Jumbotron
@@ -75,3 +75,52 @@ $jumbotron-color: white;
     }
   }
 }
+
+// @keyframes comeIn {
+//   0% { transform: scale(0) }
+//   75% { transform: scale(1.03) }
+//   100% { transform: scale(1) }
+// }
+
+// .xmasonry .xblock {
+//   animation: comeIn ease 0.5s;
+//   animation-iteration-count: 1;
+//   transition: left .3s ease, top .3s ease;
+// }
+
+// .mason {
+//   margin: 7px;
+//   padding: 5px;
+//   border-radius: 3px;
+//   box-shadow: 0 1px 3px darkgray;
+// }
+
+// Within style tags in your html file
+// body {
+//   margin: 0;
+//   padding: 1rem;
+// }
+// SCSS
+// Masonry layout horizontal
+
+// .masonry-with-columns-2 {
+//   display: flex;
+//   flex-wrap: wrap;
+//   div {
+//     height: 300px;
+//     // line-height: 150px;
+//     background: #9B1B30;
+//     color: white;
+//     margin: 0 1rem 1rem 0;
+//     text-align: center;
+//     font-weight: 900;
+//     font-size: 2rem;
+//     flex: 1 0 auto;
+//   }
+//   @for $i from 1 through 36 {
+//     div:nth-child(#{$i}) {
+//       $h: (random(500) + 75) + px;
+//       width: $h;
+//     }
+//   }
+// }

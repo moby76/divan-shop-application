@@ -1,4 +1,5 @@
 //получаем массив моделей за исключением текущей и выводим их в списке/таблице
+//
 
 // import { Fragment, useContext, useEffect } from "react"
 import { TermsTableItem } from "../components/TermsTableItem"

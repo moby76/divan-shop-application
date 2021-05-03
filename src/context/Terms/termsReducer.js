@@ -1,5 +1,5 @@
 // import basePath from "../../utils/basePath";
-import { GET_MODELS, GET_SINGLE_MODEL, SET_LOADING, FETCH_ERROR, GET_NEW_MODELS } from "../types";
+import { GET_MODELS, GET_SINGLE_MODEL, SET_LOADING, FETCH_ERROR, GET_NEW_MODELS, GET_CONFIGS } from "../types";
 
 export const TermsReducer = (state, action) => {
 
@@ -26,6 +26,11 @@ export const TermsReducer = (state, action) => {
             return {
                 ...state,
                 newModels: action.payload
+            }
+        case GET_CONFIGS:
+            return {
+                ...state,
+                configs: action.payload
             }
         case FETCH_ERROR:
             return {
