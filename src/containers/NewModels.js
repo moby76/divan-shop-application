@@ -14,7 +14,7 @@ function NewModels() {
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
-   console.log("Новые модели", newModels)
+   // console.log("Новые модели", newModels)
 
    return (
       <div className="container bg-light pb-1 pt-3 mb-3">

@@ -51,6 +51,7 @@ function Shop({ match }) {
                            />
                         </div>
 
+                        {/* Время работы магазина */}
                         <div className="col-sm-3" key={item.id}>
                            <WorkTime
                               wt={item.work_time}

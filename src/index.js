@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 
-import '@fortawesome/fontawesome-free/css/all.min.css'; import
-'bootstrap-css-only/css/bootstrap.min.css'; import
-'mdbreact/dist/css/mdb.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 import App from './App';
@@ -26,19 +26,19 @@ import ShopsState from './context/shops/shopsState';
 ReactDOM.render(
   // <React.StrictMode>
   <ShopsState>
-  <ModalState>
-    <PaginationState>
-      <AlertState>
-        <TermsState>
-          <SoftFurState>
-            <SimpleReactLightbox>
-              <App />
-            </SimpleReactLightbox>
-          </SoftFurState>
-        </TermsState>
-      </AlertState>
-    </PaginationState>
-  </ModalState>
+    <ModalState>
+      <PaginationState>
+        <AlertState>
+          <TermsState>
+            <SoftFurState>
+              <SimpleReactLightbox>
+                <App />
+              </SimpleReactLightbox>
+            </SoftFurState>
+          </TermsState>
+        </AlertState>
+      </PaginationState>
+    </ModalState>
   </ShopsState>,
   // </React.StrictMode>,
   document.getElementById('root')

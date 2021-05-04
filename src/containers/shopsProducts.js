@@ -1,6 +1,7 @@
 //контейнер отображающий все товары данного магазина
 // инкапсулирован в <Shop>(Shop.js)
 
+import { MDBCol, MDBContainer, MDBRow } from 'mdbreact'
 import React from 'react'
 import { Card } from '../components/Card'
 
@@ -17,29 +18,28 @@ function ShopsProducts({ shop, content, }) {
    // console.log("Товары данного магазина", currentShopContent)
 
    return (
-      <div className="container">
-         <div className="col-sm-12 text-center"> <h5>Все товары магазина {shop.title}</h5> </div>
+      <MDBContainer>
+         <MDBCol sm="12" className="text-center"> <h5>Все товары магазина {shop.title}</h5> </MDBCol>
          <hr />
          {currentShopContent.length > 0 ?
-               <div className="row">
+               <MDBRow>
                   {
-
                      // (loader) ?//если loader = true, то:  
                      //     <p className="text-center">...Идёт загрузка</p> : //иначе:            
                      <>
                         {currentShopContent.map((val) => {//итерация отображаемых на странице элементов массива с предачей их значений в карточки
                            return (
-                              <div className="col-sm-4 mb-4" key={val.id}>
+                              <MDBCol sm="4" className="w-100 d-flex align-items-stretch mb-4" key={val.id}>
                                  {/* карточка товара */}
                                  <Card
                                     {...val}
                                  />
-                              </div>
+                              </MDBCol>
                            )
                         })}
                      </>
                   }
-               </div>:               
+               </MDBRow>:               
                null
             // currentShopContent.map((item, i) => {
             //    return (
@@ -50,7 +50,7 @@ function ShopsProducts({ shop, content, }) {
 
          }
          {/* <p>{currentShopContent}</p> */}
-      </div>
+      </MDBContainer>
    )
 }
 

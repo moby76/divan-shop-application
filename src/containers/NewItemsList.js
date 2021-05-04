@@ -21,7 +21,7 @@ export const NewItemsList = () => {
 
     return (
         // <div className="container-fluid text-center rounded bg-light pb-1 mb-3">
-        <MDBContainer className="text-center bg-light mb-3 py-2">
+        <MDBContainer className="bg-light mb-3 py-2">
             {/* <div className="col-sm-12 p-3"> */}
             {/* <button class="btn btn-outline-danger dropdown-toggle collapsed mb-3 mt-3" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> */}
 

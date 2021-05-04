@@ -16,7 +16,7 @@ function ShopsBlock() {
    }, [])
 
 
-   console.log(shops)
+   // console.log(shops)
 
    return (
       <Fragment >

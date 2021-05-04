@@ -5,6 +5,7 @@ import { NewItemsList } from "../containers/NewItemsList"
 import SiteDescription from "../components/homepage/siteDescription"
 import NewModels from "../containers/NewModels"
 import Configlist from "../containers/configlist"
+// import Config from "./Config"
 
 export const Home = () => {
 
@@ -13,6 +14,7 @@ export const Home = () => {
         <Fragment>
             <SiteDescription />
             <Configlist />
+            {/* <Config /> */}
             <NewItemsList />
             <NewModels />            
             <ShopsBlock />

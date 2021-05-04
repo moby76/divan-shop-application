@@ -1,5 +1,6 @@
 //Описание модели Мягкой мебели
 
+import { MDBCol, MDBContainer, MDBRow } from "mdbreact"
 import { Fragment, useContext, useEffect } from "react"
 import { SRLWrapper } from "simple-react-lightbox"
 import { ItemsByModels } from "../containers/itemsByModels"
@@ -71,26 +72,26 @@ export const ModelDesc = ({ match }) => {
             <Fragment>
                 {/* <ModelDesc
                 /> */}
-                <div className="container">
-                    <div className="col-sm-12 text-center"><h3>Модель {name}</h3></div>
+                <MDBContainer>
+                    <MDBCol sm="12" className="text-center"><h3>Модель {name}</h3></MDBCol>
                     <hr />
 
                     {thisDescription}
                     <hr />
-                </div>
+                </MDBContainer>
                 {scheme.length > 0 ?
                     <SRLWrapper options={options}>
-                        <div className="row mb-3">
+                        <MDBRow className="mb-3">
                             {scheme.map((item) => {
                                 return (
-                                    <div className="col-sm-4 mb-3" key={item.id}>
+                                    <MDBCol sm="4" className="mb-3" key={item.id}>
                                         <a href={`${basePath}${item.uri.url}`}>
                                             <img src={`${basePath}${item.uri.url}`} alt={item.filename} className="img-fluid" />
                                         </a>
-                                    </div>
+                                    </MDBCol>
                                 )
                             })}
-                        </div>
+                        </MDBRow>
                     </SRLWrapper>
                     : <p>Схемы нет</p>
                 }
