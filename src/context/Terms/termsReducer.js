@@ -38,7 +38,6 @@ export const TermsReducer = (state, action) => {
                 termSingleModel: {},
                 error: 'Что-то пошло не так...'
             }
-
         case SET_LOADING:
             return { ...state, loader: true }
         default: return state

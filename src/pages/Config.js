@@ -7,13 +7,14 @@ import { SoftFurContext } from '../context/SoftFur/SoftFurContext'
 
 function Config({ match }) {
 
-   const { fetchData, content } = useContext(SoftFurContext)
+   const { fetchData, content, loader } = useContext(SoftFurContext)
 
    //Константа = значению адресной строки(В данном случае в адр. строку попадает значение псевдонима/alias пути термина таксономии)
    const urlName = match.params.path
 
    useEffect(() => {
       fetchData()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
    //создаём массив из значений ДАННОЙ конфигурацией
@@ -29,19 +30,19 @@ function Config({ match }) {
       //    {aliases}
       // </div>
       <MDBContainer>
-         
+
          <MDBRow>
-            {thisConfigContent.map((val) => (
-
-               // <p key={item.id}>{item.title}</p>
-               <MDBCol sm="4" className="w-100 d-flex align-items-stretch mb-4" key={val.id}>
-                  {/* карточка товара */}
-                  <Card
-                     {...val}
-                  />
-               </MDBCol>
-
-            ))}
+            {loader ?
+               <p className="text-center">...Идёт загрузка</p> :
+               thisConfigContent.map((val) => (
+                  <MDBCol sm="4" className="w-100 d-flex align-items-stretch mb-4" key={val.id}>
+                     {/* карточка товара */}
+                     <Card
+                        {...val}
+                     />
+                  </MDBCol>
+               ))
+            }
          </MDBRow>
       </MDBContainer>
    )

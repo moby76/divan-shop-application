@@ -100,7 +100,8 @@ export const TermsState = ({ children }) => {
             })
     }
 
-    //метод изменения состояния лоадера
+    //метод изменения состояния лоадера. Внедряется в каждый fetch запрос  --^
+    //диспетчерит по типу SET_LOADING
     const setLoader = () => {
         dispatch({
             type: SET_LOADING

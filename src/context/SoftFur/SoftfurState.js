@@ -42,7 +42,7 @@ export const SoftFurState = ({ children }) => {
 
     //Запрос на получение данных для формирования описания одного товара
     const fetchProduct = async (url) => {
-        setLoader()
+        // setLoader()
         const prodVal = await API.get(
             `node/soft_fur/${url}?include=photo,soft_config,transformation,filling,model,model.scheme,dimensions,dimensions.image&fields[node--dimensions]=image&fields[taxonomy_term--filling]=name`
         )
@@ -53,10 +53,10 @@ export const SoftFurState = ({ children }) => {
 
     }
 
-    //Запрос на получение данных для формирования списка новинок
+    //Запрос на получение данных для формирования списка последних поступлений
     const fetchNewItems = async () => {
 
-        setLoader()
+        // setLoader()
 
         const response = await API.get(
             `node/soft_fur?include=where,photo,soft_config&filter[new_item][value]=1&fields[node--soft_fur]=where,title,available,price_base,created,photo,soft_config&sort=created&page[limit]=5`

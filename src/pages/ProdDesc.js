@@ -47,35 +47,36 @@ export const ProdDesc = ({ match }) => {
 	//вызов ф-ции получения конкретного продукта по urlName(uuid) из контекста SoftFurContext
 	useEffect(() => {
 
-		setTimeout(() => {
+		// setTimeout(() => {
+			
 
 			fetchProduct(urlName)//
 
 			// console.log('useEffect 1 (fetchProduct)')
-		}, 1000);
+		// }, 1000);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	//вызов ф-ции получения всех товаров мягкой мебели из контекста SoftFurContext
 	useEffect(() => {
-		setTimeout(() => {
+		// setTimeout(() => {
 
 			fetchData()//
 
 			// console.log('useEffect 2 (fetchData)')
-		}, 1500);
+		// }, 1500);
 		// eslint-disable-next-line
 	}, [])
 
 	//вызов ф-ции получения списка моделей
 	useEffect(() => {
 		// let mounted = true
-		setTimeout(() => {
+		// setTimeout(() => {
 
 			fetchTermsModel()
 
 			// console.log('useEffect 3 (fetchTermsModel)')
-		}, 2500)
+		// }, 2500)
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 

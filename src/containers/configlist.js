@@ -13,12 +13,13 @@ function Configlist() {
 
    useEffect(() => { 
       fetchConfigs()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
    return (
       // <div className="container-fluid bg-light pb-1 pt-3 mb-3"> 
       <MDBContainer fluid>       
-         <div className="col-sm-12 text-center text-secondary"> <h4>Компонент с конфигурациями</h4></div>
+         <div className="col-sm-12 text-center text-secondary"> <h4>Выберите конфигурацию мебели</h4></div>
             <hr />
          {configs.length !== 0 ?
          // <div className="row">

@@ -13,7 +13,7 @@ import { ModalContext } from "../context/modal/modalContext";
 
 function Specifications({ available, config, transformation, filling, productModelScheme, dimensions, productModelDesc, features, productModelName, productModelId }) {
     
-    const { openModal} = useContext(ModalContext)
+    const { openModal } = useContext(ModalContext)
 
     //создать обработчик событий при нажатии на кнопку
     const handlerOpenDimensions = () => {

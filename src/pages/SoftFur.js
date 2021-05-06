@@ -6,6 +6,7 @@ import { Card } from '../components/Card';
 import { PaginationPage } from "../utils/navigation/paginationPage";
 import { SoftFurContext } from '../context/SoftFur/SoftFurContext';
 import { PaginationContext } from "../context/pagination/paginationContext";
+import { MDBCol, MDBContainer, MDBRow } from "mdbreact";
 // import { PaginationContext } from "../context/pagination/paginationContext";
 
 // function isValidData(data) {
@@ -44,29 +45,26 @@ export const SoftFur = () => {
   // console.log(content)
 
   return (
-    <div className="container">
-      <div className="col-sm-12 text-center"><h3>Вся Мягкая мебель</h3></div>
+    <MDBContainer>
+      <MDBCol sm="12" className="text-center"><h3>Вся Мягкая мебель</h3></MDBCol>
       <hr />
-      <div className="row">
+      <MDBRow>
         {loader ?
           <p className="text-center">...Идёт загрузка</p> :
-          currentItems.map((val) => {
-            return(
-              
-              <div className="col-sm-4 mb-4" key={val.id}>
-                <Card
-                  {...val}
-                />
-              </div>
-            )
-          })
-        }           
-      </div>
+          currentItems.map((val) => (
+            <MDBCol sm="4" className="w-100 d-flex align-items-stretch mb-4" key={val.id}>
+              <Card
+                {...val}
+              />
+            </MDBCol>
+          ))
+        }
+      </MDBRow>
       <PaginationPage
-        // totalItems={content.length}
-        // itemsPerPage={itemsPerPage}
+      // totalItems={content.length}
+      // itemsPerPage={itemsPerPage}
       />
-    </div>
+    </MDBContainer>
   );
 };
 
