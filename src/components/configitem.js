@@ -13,7 +13,7 @@ function Configitem({ id, name, config_image, path }) {
          {/* {name} */}
          <Link to={`/configurations${path.alias}`} target="_blank">
             <MDBView hover zoom>
-               <img src={`${basePath}${config_image.uri.url}`} alt={config_image.meta.alt} className="img-fluid vh-75 vw-100" />
+               <img src={`${basePath}${config_image.uri.url}`} alt={config_image.meta.alt} className="img-fluid vw-100" />
                <MDBMask overlay="black-strong" className="flex-center">
                 <p className="white-text text-uppercase font-weight-normal">{name}</p>
               </MDBMask>

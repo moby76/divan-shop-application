@@ -18,7 +18,7 @@ function Configlist() {
 
    return (
       // <div className="container-fluid bg-light pb-1 pt-3 mb-3"> 
-      <MDBContainer className="bg-light my-2">       
+      <MDBContainer className="bg-light mb-3">       
          {/* <div className="col-sm-12 text-center text-secondary"> <h4>Выберите конфигурацию мебели</h4></div> */}
             {/* <hr /> */}
          {configs.length !== 0 ?
