@@ -14,7 +14,7 @@ export const Home = () => {
     return (
         <Fragment>
 
-            <MDBContainer fluid className="bg-warning bg">
+            <MDBContainer fluid className="bg">
                 {/* <div className="bg"></div> */}
 
                 <SiteDescription />

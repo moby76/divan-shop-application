@@ -28,14 +28,16 @@ export const NewItemsList = () => {
             {/* <MDBBtn color="purple">Посмотреть новые поступления</MDBBtn> */}
             <>
                 <MDBBtn 
-                color="purple"
+                color="deep-purple"
                 // onClick={toggleCollapse("basicCollapse")}
                 onClick={() => setToggle(!toggle)}//переключаем на противоположное значение
                 // style={{ marginBottom: "1rem" }}
                 className="mb-3"
                 >
-                <MDBIcon icon="magic" className="mr-1" />
+                <MDBIcon icon="list" className="mr-2" />
                 Посмотреть новые поступления
+                <MDBIcon icon="angle-down" className="ml-2" />
+                
                 </MDBBtn>
 
             </>
@@ -65,8 +67,9 @@ export const NewItemsList = () => {
                 onClick={() => setToggle(!toggle)}//переключаем на противоположное значение
                 style={{ marginBottom: "1rem" }}
                 >
-                <MDBIcon icon="magic" className="mr-1" />
+                
                 Свернуть
+                <MDBIcon icon="angle-up" className="ml-2" />
                 </MDBBtn>
 
             </>

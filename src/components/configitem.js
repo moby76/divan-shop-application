@@ -11,10 +11,10 @@ function Configitem({ id, name, config_image, path }) {
          {/* <MDBBox display="flex" alignContent="center"> */}
 
          {/* {name} */}
-         <Link to={`/configurations${path.alias}`} target="_blank">
-            <MDBView hover zoom>
+         <Link to={`/configurations${path.alias}`} target="_blank" >
+            <MDBView hover zoom >
                <img src={`${basePath}${config_image.uri.url}`} alt={config_image.meta.alt} className="img-fluid vw-100" />
-               <MDBMask overlay="black-strong" className="flex-center">
+               <MDBMask overlay="black-strong" className="flex-center" style={{cursor: 'pointer'}}>
                 <p className="white-text text-uppercase font-weight-normal">{name}</p>
               </MDBMask>
             </MDBView>
