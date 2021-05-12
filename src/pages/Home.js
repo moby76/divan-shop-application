@@ -13,14 +13,21 @@ export const Home = () => {
 
     return (
         <Fragment>
-            <div className="bg"></div>
-            <SiteDescription />
-            <Configlist />
-            {/* <Config /> */}
-            <NewItemsList />
-            <NewModels />
-            <ShopsBlock />
 
+            <MDBContainer fluid className="bg-warning bg">
+                {/* <div className="bg"></div> */}
+
+                <SiteDescription />
+                <MDBContainer fluid >
+                    <MDBContainer className="bg-white p-1">
+                        <Configlist />
+                        {/* <Config /> */}
+                        <NewItemsList />
+                        <NewModels />
+                    </MDBContainer>
+                    <ShopsBlock />
+                </MDBContainer>
+            </MDBContainer>
         </Fragment>
     )
 }
