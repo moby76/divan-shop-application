@@ -1,5 +1,6 @@
 //компонент новинки - инкапсулирован в контейнер NewItemsList
 
+import { MDBBtn, MDBCard, MDBCardHeader, MDBCol, MDBIcon, MDBListGroup, MDBListGroupItem } from "mdbreact";
 import { Link } from "react-router-dom";
 import { SRLWrapper } from "simple-react-lightbox";
 import basePath from '../utils/basePath'
@@ -38,30 +39,33 @@ export const NewItem = ({ title, price_base, photo, soft_config, id, available, 
     // console.log(where.title)
     return (
         <>
-            <div className="col" >
-                <div className="card h-100">
-                    <div className="card-header">
+            <MDBCol >
+                <MDBCard className="h-100">
+                    <MDBCardHeader className="card-header">
                         <h5 className="card-title">{title}</h5>
-                    </div>
+                    </MDBCardHeader>
                     <SRLWrapper options={options}>
                         <a href={`${basePath}${photo[0].uri.url}`}>
                             <img src={`${basePath}${photo[0].uri.url}`} alt={photo[0].filename} className="card-img-top p-3" />
                         </a>
                     </SRLWrapper>
-                </div>
-            </div>
-            <div className="col d-flex flex-column">
+                </MDBCard>
+            </MDBCol>
+            <MDBCol className="d-flex flex-column">
 
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Стоимость : {price_base} руб.</li>
-                    <li className="list-group-item">Конфигурация : {soft_config.name}</li>
-                    <li className="list-group-item">Наличие : {available ? <span>В наличии</span> : <span>Отсутствует</span>}</li>
-                    {available ? <li className="list-group-item"><span>{where.title}</span></li> : <li className="list-group-item"><span>Заказать</span></li>}
+                <MDBListGroup className="list-group-flush">
+                    <MDBListGroupItem >Стоимость : {price_base} руб.</MDBListGroupItem>
+                    <MDBListGroupItem >Конфигурация : {soft_config.name}</MDBListGroupItem>
+                    <MDBListGroupItem >Наличие : {available ? <span>В наличии</span> : <span>Отсутствует</span>}</MDBListGroupItem>
+                    {available ? <MDBListGroupItem ><span>{where.title}</span></MDBListGroupItem> : <MDBListGroupItem ><span>Заказать</span></MDBListGroupItem>}
 
-                </ul>
-                
-                <Link to={`/soft-furniture/${id}`} target="_blank" className="btn btn-primary mt-auto">Подробнее</ Link >
-            </div>
+                </MDBListGroup>
+
+                <Link to={`/soft-furniture/${id}`} target="_blank" className="mt-auto d-flex justify-content-end">
+                    <MDBBtn color="purple">Подробнее<MDBIcon icon="external-link-alt" className="ml-2"/></MDBBtn>
+                </ Link>
+
+            </MDBCol>
 
         </>
     )
