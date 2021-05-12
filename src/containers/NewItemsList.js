@@ -62,7 +62,7 @@ export const NewItemsList = () => {
                 </div>
                 <>
                 <MDBBtn 
-                color="default"
+                color="deep-purple"
                 // onClick={toggleCollapse("basicCollapse")}
                 onClick={() => setToggle(!toggle)}//переключаем на противоположное значение
                 style={{ marginBottom: "1rem" }}
