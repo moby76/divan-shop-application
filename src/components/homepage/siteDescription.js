@@ -7,12 +7,12 @@ function SiteDescription() {
    const [loader, setLoader] = useState(false)
 
    return (
-      <MDBContainer >
+      <MDBContainer className="mb-3" style={{ background: 'rgb(0 0 0 / 63%)', marginTop: '4rem' }}>
          <MDBRow isOpen={()=>setLoader(!loader)}>
             {loader ?
             <p className="text-center">...Идёт загрузка</p> :
-            <MDBCol >
-               <MDBJumbotron className="bg-transparent" style={{ padding: 0 }}>
+            < >
+               {/* <MDBJumbotron className="bg-transparent" style={{ padding: 0 }}> */}
                   {/* <div style={{ background: 'transparent !important' }} className="jumbotron"> */}
                   <MDBCol className="text-white text-center py-3 px-4 my-1" style={{  }}>
                      <MDBCol className="py-1">
@@ -35,8 +35,8 @@ function SiteDescription() {
                      </MDBCol>
                   </MDBCol>
                   {/* </div> */}
-               </MDBJumbotron>
-            </MDBCol>
+               {/* </MDBJumbotron> */}
+            </>
             }
          </MDBRow>
       </MDBContainer >
