@@ -23,7 +23,7 @@ function Configlist() {
             <hr />
          {configs.length !== 0 ?
          // <div className="row">
-          <MDBRow >
+          <MDBRow my-3>
             {configs.map(item => {
                return(
                   // <div >
