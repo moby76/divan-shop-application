@@ -32,7 +32,7 @@ export const SoftFurState = ({ children }) => {
     const fetchData = async () => {
         setLoader()
         const contentVal = await API.get(
-            `node/soft_fur?include=photo,soft_config,model,where&sort=created`
+            `node/soft_fur?include=photo,soft_config,model,where&sort=-created`
         )
         dispatch({
             type: GET_PRODUCTS,//данный тип оказывает влияние на массив content(заполняет его данными из jsonapi) и так-же деактивирует loader(false)
@@ -59,7 +59,7 @@ export const SoftFurState = ({ children }) => {
         // setLoader()
 
         const response = await API.get(
-            `node/soft_fur?include=where,photo,soft_config&filter[new_item][value]=1&fields[node--soft_fur]=where,title,available,price_base,created,photo,soft_config&sort=created&page[limit]=5`
+            `node/soft_fur?include=where,photo,soft_config&filter[new_item][value]=1&fields[node--soft_fur]=where,title,available,price_base,created,photo,soft_config&sort=-created&page[limit]=5`
         )
         dispatch({
             type: GET_NEWITEMS,
