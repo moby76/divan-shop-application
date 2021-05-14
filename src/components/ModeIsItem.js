@@ -4,6 +4,7 @@
 import { SRLWrapper } from "simple-react-lightbox";
 import { Link } from "react-router-dom";
 import basePath from '../utils/basePath'
+import NoImage from "./noImage";
 // import { SoftFurContext } from "../context/SoftFur/SoftFurContext"
 
 export const ModeIsItem = ({ name, model_desc, scheme, id }) => {
@@ -52,7 +53,7 @@ export const ModeIsItem = ({ name, model_desc, scheme, id }) => {
                             </a>
                         </SRLWrapper>
                         :
-                        <h5>Нет изображения</h5>}
+                        <NoImage />}
                     <div className="card-body">
                         {/* <h5 className="card-text"></h5> */}
                     </div>

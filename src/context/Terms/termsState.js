@@ -64,7 +64,7 @@ export const TermsState = ({ children }) => {
     const fetchNeweModels = async () => {
         // setLoader()
         await API.get(
-            `taxonomy_term/models?include=scheme&filter[new_model]=1&page[limit]=3&sort=revision_created`
+            `taxonomy_term/models?include=scheme&filter[new_model]=1&page[limit]=3&sort=-revision_created`
         )
             .then(value => {
                 dispatch({

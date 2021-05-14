@@ -87,7 +87,7 @@ function Specifications({ available, config, transformation, filling, productMod
                 </div>
                 <div className="tab-pane fade" id="scheme">
                     <div className="row">
-                        <div className="col-sm-12"><Scheme scheme={productModelScheme} /></div>
+                        <div className="col-sm-12"><Scheme scheme={productModelScheme ? productModelScheme : <p>Нет изображения</p>} /></div>
                         {/* <div className="col-sm-4"><Dimensions dimensions={dimensions} /></div> */}
                     </div>
                 </div>

@@ -1,6 +1,5 @@
 //Страница отображения всех товаров типа "мягкая мебель"
 
-
 import React, { useContext, useEffect } from "react";
 import { Card } from '../components/Card';
 import { PaginationPage } from "../utils/navigation/paginationPage";

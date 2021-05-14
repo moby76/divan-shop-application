@@ -11,7 +11,7 @@ export const Card = ({ title, photo, soft_config, id }) => (
         {/* <img src={`http://api.divan-shop.loc/${photo.uri.url}`} alt={photo.filename} className="card-img-top p-3" /> */}
         <MDBCardBody className="h-50">
             <Link to={`/soft-furniture/${id}`} target="_blank">
-                <MDBCardImage src={`${basePath}${photo[0].uri.url}`} alt={photo.filename} className="p-3 w-100 h-100" />
+                <MDBCardImage src={`${basePath}${photo[0].uri.url}`} alt={photo.filename} className="w-100 h-100" />
             </ Link >
         </MDBCardBody>
         <MDBCardBody className="my-auto" >

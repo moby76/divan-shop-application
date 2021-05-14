@@ -85,7 +85,7 @@ export const ProdDesc = ({ match }) => {
 		return callback.id !== urlName && callback.model.name === productModelName
 	})
 
-	console.log(content)
+	// console.log(content)
 
 	if (loader) {
 		return <p className="text-center">...Идёт загрузка</p>
