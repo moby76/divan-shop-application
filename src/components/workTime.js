@@ -1,3 +1,4 @@
+import { MDBCol, MDBContainer, MDBIcon, MDBListGroup, MDBListGroupItem, MDBRow } from 'mdbreact'
 import React from 'react'
 
 function WorkTime({ wt }) {
@@ -31,20 +32,24 @@ function WorkTime({ wt }) {
 
    return (
 
-      <div>
-         <h6>Время работы</h6>
-         <div className="container">
-            {wt.length > 0 ? wt.map((item, i) => {
-               return (
-                  <div key={i}>
-                     <p>{item.week_day}:&nbsp;&nbsp;&nbsp;{item.time.from} - {item.time.to}</p>
-                  </div>
-               )
-            }) :
-               null
-            }
-         </div>
-      </div>
+      <>
+         <MDBCol md="2">
+            <MDBIcon far icon="clock" size="2x" className="cyan-text pr-3" />
+         </MDBCol>
+         <MDBCol md="10">
+            {/* <MDBListGroup> */}
+               {wt.length > 0 ? wt.map((item, i) => {
+                  return (
+                     <MDBRow key={i}>
+                        <p>{item.week_day}:&nbsp;&nbsp;&nbsp;{item.time.from} - {item.time.to}</p>
+                     </MDBRow>
+                  )
+               }) :
+                  null
+               }
+            {/* </MDBListGroup> */}
+         </MDBCol>
+      </>
    )
 }
 

@@ -1,11 +1,14 @@
 //Страница представления одного магазина
 
+import { MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact'
 import React, { useContext, useEffect } from 'react'
+import Address from '../components/Address'
 import WorkTime from '../components/workTime'
 import ShopsProducts from '../containers/shopsProducts'
 import { ShopsContext } from '../context/shops/shopsContext'
 import { SoftFurContext } from '../context/SoftFur/SoftFurContext'
 import Map from '../utils/map/map'
+// import Geocode from "react-geocode"
 
 function Shop({ match }) {
 
@@ -36,10 +39,11 @@ function Shop({ match }) {
             singleShop.map((item) => {
                // console.log(item)
                return (
-                  <div className="container-fluid">
-                     <div className="row mb-3">
-                        <div className="col-sm-9">
+                  <MDBContainer fluid>
+                     <MDBRow className="mb-3">
+                        <MDBCol md="9">
                            {item.title}
+                           {/* карта */}
                            <Map
                               googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`}
                               loadingElement={<div style={{ height: `100%` }} />}
@@ -49,21 +53,33 @@ function Shop({ match }) {
                               // longitude={item.location.lng}
                               item={item}
                            />
-                        </div>
+                        </MDBCol>
 
-                        {/* Время работы магазина */}
-                        <div className="col-sm-3" key={item.id}>
-                           <WorkTime
-                              wt={item.work_time}
-                           />
-                        </div>
-                     </div>
+                        <MDBCol md="3">
+
+                           {/* адрес */}
+                           <MDBRow key={item.id}>
+                              {/* <MDBIcon icon="map-marked-alt" /> */}
+                              <Address
+                                 item={item}
+                              />
+                           </MDBRow>
+                              <hr/>
+                           {/* Время работы магазина */}
+                           <MDBRow key={item.id} className="mt-3">
+                           {/* <MDBIcon far icon="clock" /> */}
+                              <WorkTime
+                                 wt={item.work_time}
+                              />
+                           </MDBRow>
+                        </MDBCol>
+                     </MDBRow>
                      <ShopsProducts
                         shop={item}
                         content={content}
 
                      />
-                  </div>
+                  </MDBContainer>
 
                )
             }) :
